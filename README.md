@@ -14,10 +14,10 @@ Prompts for project-wide (`.opencode/`) or global (`~/.config/opencode/`) instal
 
 | Agent | Role | Permissions |
 |---|---|---|
-| **Product Owner** | Business requirements, value delivery | Read-only |
+| **Product Owner** | Business requirements, value delivery | Edit + Bash |
 | **Solution Architect** | Technical design, architecture | Edit + Bash |
 | **Software Engineer** | Production implementation | Edit + Bash |
-| **QA Engineer** | Quality validation, release confidence | Read-only |
+| **QA Engineer** | Quality validation, release confidence | Edit + Bash |
 
 ## MCP Servers
 
