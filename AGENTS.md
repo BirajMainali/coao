@@ -48,8 +48,7 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 
 - `caveman` — Ultra-compressed communication mode. Cuts token usage ~75%. Use `caveman` when asked for brevity.
 - `git-worktree` — Git worktree management for mission-based development.
-- `grill-with-docs` — Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when user wants to stress-test a plan against their project's language and documented decisions.
-- `domain-modeling` — Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model.
+- `grill-me` — A relentless interview to sharpen a plan or design. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
 
 ## MCP Servers
 

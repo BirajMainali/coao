@@ -35,8 +35,7 @@ Additional tools available to agents during development:
 
 - **caveman** — Ultra-compressed communication mode (~75% fewer output tokens). Activates on `/caveman` or request for brevity.
 - **git-worktree** — Git worktree management for isolated mission-based development.
-- **grill-with-docs** — Stress-tests plans against the existing domain model, sharpens terminology, and updates docs (CONTEXT.md, ADRs) inline.
-- **domain-modeling** — Builds and sharpens a project's domain model, glossary, and architectural decisions.
+- **grill-me** — A relentless interview to sharpen a plan or design. Use when you want to stress-test an idea.
 
 ## Getting Started
 
