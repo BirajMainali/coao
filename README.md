@@ -1,5 +1,3 @@
-<img src="https://img.shields.io/badge/license-Proprietary-red" alt="License"> <img src="https://img.shields.io/badge/status-active-success" alt="Status"> <img src="https://img.shields.io/badge/powered_by-OpenCode-6C47FF" alt="OpenCode">
-
 # COAO — Collaborative Agent Operating Organization
 
 A turnkey multi-agent engineering environment for [OpenCode](https://opencode.ai). COAO organizes AI agents into a structured engineering organization with specialized roles, codified rules, and mission-based workspaces — so they collaborate on software projects like a real team, not a chat session.
@@ -58,26 +56,6 @@ serena init
 ```
 
 ## Architecture
-
-### Powered by OpenCode
-
-COAO is not a standalone framework — it's a **configuration layer** on top of [OpenCode](https://opencode.ai), the agent runtime.
-
-| Layer | What It Provides |
-|---|---|
-| **OpenCode** | Agent runtime, LLM execution, tool calling (edit, bash, file search), subagent orchestration, MCP integration, skill loading |
-| **COAO config** (`.opencode/`) | Agent definitions, organizational rules, MCP server setup, skill declarations, workspace conventions |
-
-Here's how it wires together:
-
-1. OpenCode reads `AGENTS.md` (the entry point) and `opencode.json` at startup.
-2. `AGENTS.md` declares the subagents (PO, SA, SE, QA), points to the rules directory, and lists available skills and MCP servers.
-3. `opencode.json` configures the MCP servers (Serena, Chrome DevTools, fixture-mcp) with their binary paths and arguments.
-4. When you invoke a subagent, OpenCode spawns it with its agent definition (`.opencode/agents/*.md`), which includes role-specific instructions, decision frameworks, permission settings, and temperature.
-5. Skills are loaded on demand via `/skill` commands.
-6. The `.coao/` directory is COAO's convention (not OpenCode's) — isolated workspaces that keep mission state separate from source code.
-
-In short: OpenCode is the engine; COAO is the organizational blueprint that tells the engine what to do and how to behave.
 
 ### Agents
 
@@ -142,5 +120,3 @@ This is what makes COAO an _organization_, not just a collection of prompts. Rul
 Open an issue or pull request on [GitHub](https://github.com/BirajMainali/coao).
 
 ---
-
-Built with [OpenCode](https://opencode.ai).
