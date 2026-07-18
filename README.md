@@ -39,10 +39,17 @@ Additional tools available to agents during development:
 
 ## Getting Started
 
-This project requires [OpenCode](https://opencode.ai) as the AI client. Configuration is in `opencode.json`.
+### Install in your project
 
 ```bash
-# Install global dependencies
+curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/main/install.sh | bash
+```
+
+The script will ask whether to install project-wide (`.opencode/` in your current directory) or globally (`~/.config/opencode/`).
+
+### Install global dependencies
+
+```bash
 npm install -g fixture-mcp
 uv tool install -p 3.13 serena-agent
 serena init
@@ -52,14 +59,20 @@ serena init
 
 ```
 .opencode/
-├── agents/          # Subagent definitions (PO, QA, SE, SA)
-├── skills/          # Reusable skills (caveman, git-worktree)
-rules/
-├── behavior/        # Communication, decisions, quality, research
-├── governance/      # Decisions, knowledge, standards
-└── operations/      # Workspace, collaboration, session, handoff, artifacts
-AGENTS.md            # Primary opencode instructions
-opencode.json         # OpenCode configuration with MCP servers
+├── AGENTS.md          # Primary opencode instructions
+├── opencode.json      # OpenCode configuration with MCP servers
+├── agents/            # Subagent definitions (PO, QA, SE, SA)
+├── skills/            # Reusable skills
+│   ├── caveman/
+│   ├── git-worktree/
+│   └── grilling/
+└── rules/             # Organizational policies
+    ├── behavior/      # Communication, decisions, quality, research
+    ├── governance/    # Decisions, knowledge, standards
+    └── operations/    # Workspace, collaboration, session, handoff, artifacts
+AGENTS.md → .opencode/AGENTS.md          # Symlink
+opencode.json → .opencode/opencode.json  # Symlink
+install.sh           # Install script for other projects
 ```
 
 ## Conventions
