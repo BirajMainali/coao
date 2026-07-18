@@ -308,7 +308,11 @@ Mission Created
 
 ↓
 
-Workspace Initialized
+**Load the `git-worktree` skill and initialize a dedicated worktree with feature branch.**
+
+↓
+
+Workspace Initialized (`.coao/workspace/active/<mission-slug>/`)
 
 ↓
 
