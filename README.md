@@ -42,7 +42,7 @@ When a mission is archived, the knowledge gained — architecture decisions, qua
 ## Quick Start
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/master/install.sh | bash
 ```
 
 The script prompts for **project-wide** install (`.opencode/` in current directory) or **global** install (`~/.config/opencode/`). Once installed, launch OpenCode in your project and the agents, rules, and tools are ready.
