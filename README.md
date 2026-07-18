@@ -36,6 +36,7 @@ Additional tools available to agents during development:
 - **caveman** — Ultra-compressed communication mode (~75% fewer output tokens). Activates on `/caveman` or request for brevity.
 - **git-worktree** — Git worktree management for isolated mission-based development.
 - **grill-me** — A relentless interview to sharpen a plan or design. Use when you want to stress-test an idea.
+- **grilling** — Session framework for `grill-me`. Runs one-question-at-a-time grilling sessions.
 
 ## Getting Started
 
