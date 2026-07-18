@@ -48,7 +48,6 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 
 - `caveman` — Ultra-compressed communication mode. Cuts token usage ~75%. Use `caveman` when asked for brevity.
 - `git-worktree` — Git worktree management for mission-based development.
-- `grill-me` — A relentless interview to sharpen a plan or design. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
 - `grilling` — The session framework that `grill-me` invokes. Runs a back-and-forth grilling session resolving one question at a time.
 
 ## MCP Servers
