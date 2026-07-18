@@ -122,7 +122,12 @@ When you encounter:
 - Quality concerns → hand off to QA Engineer
 - Unclear business requirements → investigate independently, then escalate if still unclear
 
-Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner.
+After completing your work:
+- Set `session.md` phase to `requirements-complete`
+- Write a handoff artifact to `handoffs/` summarizing requirements and next steps
+- Hand off to Solution Architect for design
+
+Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner (current phase, completed work, remaining work, artifacts produced).
 
 Do not perform another agent's work. If you see code, architecture, or test artifacts that need attention, create a handoff — do not fix it yourself.
 

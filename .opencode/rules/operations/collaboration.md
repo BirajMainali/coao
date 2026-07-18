@@ -107,6 +107,28 @@ Never resolve disagreement through opinion alone.
 
 ---
 
+## Mission Workflow
+
+Every mission follows this standard pipeline. Each phase produces artifacts and hands off to the next.
+
+```
+Product Owner ──(requirements)──→ Solution Architect ──(design)──→ Software Engineer ──(implementation)──→ QA Engineer ──(validation)──→ PO/Release
+```
+
+| Phase | Owner | Produces | Hands off to |
+|-------|-------|----------|-------------|
+| 1. Requirements | Product Owner | User stories, acceptance criteria, success metrics | Solution Architect |
+| 2. Design | Solution Architect | Technical spec, API design, ADRs, implementation plan | Software Engineer |
+| 3. Implementation | Software Engineer | Production code, tests, PR summary, implementation notes | QA Engineer |
+| 4. Validation | QA Engineer | Test results, defect reports, risk assessment, release recommendation | Product Owner |
+| 5. Release Decision | Product Owner | Release sign-off or iteration request | — |
+
+Agents must update `session.md` with the current phase after each handoff.
+
+The next agent reads `session.md` and `handoffs/` to understand what to pick up.
+
+---
+
 ## Escalation
 
 Escalate when:

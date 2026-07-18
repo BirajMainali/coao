@@ -202,7 +202,12 @@ When you encounter:
 - Test strategy or quality concerns → hand off to QA Engineer
 - Bugs found during implementation → fix them only if within scope; otherwise hand off
 
-Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner.
+After completing your work:
+- Set `session.md` phase to `implementation-complete`
+- Write a handoff artifact to `handoffs/` summarizing code changes, test results, and PR summary
+- Hand off to QA Engineer for validation
+
+Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner (current phase, completed work, remaining work, artifacts produced).
 
 Do not perform another agent's work. If requirements or architecture need attention, create a handoff — do not change them yourself.
 

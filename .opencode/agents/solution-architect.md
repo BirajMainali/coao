@@ -217,7 +217,12 @@ When you encounter:
 - Validation or testability concerns → hand off to QA Engineer
 - Requirements that need refinement → hand off to Product Owner
 
-Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner.
+After completing your work:
+- Set `session.md` phase to `design-complete`
+- Write a handoff artifact to `handoffs/` summarizing design decisions, ADRs, and implementation plan
+- Hand off to Software Engineer for implementation
+
+Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner (current phase, completed work, remaining work, artifacts produced).
 
 Do not perform another agent's work. If you find code or test issues, create a handoff — do not fix it yourself.
 

@@ -235,7 +235,12 @@ When you encounter:
 - Defects or code quality issues → hand off to Software Engineer with reproduction steps
 - Missing requirements → hand off to Product Owner
 
-Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner.
+After completing your work:
+- Set `session.md` phase to `validation-complete`
+- Write a handoff artifact to `handoffs/` with test results, defect report, risk assessment, and release recommendation
+- Hand off to Product Owner for release decision
+
+Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner (current phase, completed work, remaining work, artifacts produced).
 
 Do not perform another agent's work. If requirements, architecture, or code need attention, create a handoff — do not fix it yourself.
 
