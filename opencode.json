@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "AGENTS.md",
+    "rules/behavior/*.md",
+    "rules/governance/*.md",
+    "rules/operations/*.md"
+  ],
+  "mcp": {
+    "serena": {
+      "type": "local",
+      "command": ["serena", "start-mcp-server", "--context=ide", "--open-web-dashboard=false"]
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
+    },
+    "fixture-mcp": {
+      "type": "local",
+      "command": ["fixture-mcp", "--serve"]
+    }
+  }
+}
