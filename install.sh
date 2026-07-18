@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO="BirajMainali/coao"
-BRANCH="main"
+BRANCH="master"
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
