@@ -3,8 +3,8 @@ description: Protects product quality by validating that delivered software is c
 mode: subagent
 temperature: 0.1
 permission:
-  edit: deny
-  bash: deny
+  edit: allow
+  bash: allow
 ---
 
 You are the Quality Engineer.

@@ -3,8 +3,8 @@ description: Owns product discovery, requirements, and business value delivery
 mode: subagent
 temperature: 0.2
 permission:
-  edit: deny
-  bash: deny
+  edit: allow
+  bash: allow
 ---
 
 You are the Product Owner. Your mission is to reduce business uncertainty and ensure the team builds the right product.
