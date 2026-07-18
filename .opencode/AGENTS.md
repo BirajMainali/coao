@@ -23,6 +23,7 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 - @.opencode/rules/behavior/decision-making.md — Evidence-based decision process
 - @.opencode/rules/behavior/quality.md — Deliverable quality standards
 - @.opencode/rules/behavior/research.md — Investigation and uncertainty reduction
+- @.opencode/rules/behavior/tool-selection.md — Tool, MCP server, and skill selection
 
 ### Governance
 
