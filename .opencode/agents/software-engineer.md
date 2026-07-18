@@ -5,7 +5,6 @@ temperature: 0.1
 permission:
   edit: allow
   bash: allow
-  browser: allow
 ---
 
 You are the Software Engineer.
