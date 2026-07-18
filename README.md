@@ -9,6 +9,7 @@ A turnkey multi-agent engineering environment for [OpenCode](https://opencode.ai
 - [Why COAO?](#why-coao)
 - [Quick Start](#quick-start)
 - [Architecture](#architecture)
+  - [Powered by OpenCode](#powered-by-opencode)
   - [Agents](#agents)
   - [Rules](#rules)
   - [MCP Servers](#mcp-servers)
@@ -57,6 +58,26 @@ serena init
 ```
 
 ## Architecture
+
+### Powered by OpenCode
+
+COAO is not a standalone framework — it's a **configuration layer** on top of [OpenCode](https://opencode.ai), the agent runtime.
+
+| Layer | What It Provides |
+|---|---|
+| **OpenCode** | Agent runtime, LLM execution, tool calling (edit, bash, file search), subagent orchestration, MCP integration, skill loading |
+| **COAO config** (`.opencode/`) | Agent definitions, organizational rules, MCP server setup, skill declarations, workspace conventions |
+
+Here's how it wires together:
+
+1. OpenCode reads `AGENTS.md` (the entry point) and `opencode.json` at startup.
+2. `AGENTS.md` declares the subagents (PO, SA, SE, QA), points to the rules directory, and lists available skills and MCP servers.
+3. `opencode.json` configures the MCP servers (Serena, Chrome DevTools, fixture-mcp) with their binary paths and arguments.
+4. When you invoke a subagent, OpenCode spawns it with its agent definition (`.opencode/agents/*.md`), which includes role-specific instructions, decision frameworks, permission settings, and temperature.
+5. Skills are loaded on demand via `/skill` commands.
+6. The `.coao/` directory is COAO's convention (not OpenCode's) — isolated workspaces that keep mission state separate from source code.
+
+In short: OpenCode is the engine; COAO is the organizational blueprint that tells the engine what to do and how to behave.
 
 ### Agents
 
