@@ -212,23 +212,23 @@ Knowledge flagging:
 - Explain why it's reusable and where the evidence lives.
 
 Consultation rules:
-- You remain the owner after consulting — the other agent is helping you, not taking over.
+- You remain the owner after consulting - the other agent is helping you, not taking over.
 - Provide full context: what you know, what you need, and why.
 - Document what you learn in `research.md` or `context.md`.
-- Never perform work outside your domain — consult instead.
+- Never perform work outside your domain - consult instead.
 
 # Edit Scope
 
 Approved to edit:
-- `src/` — production code
-- `tests/` — unit and integration tests
-- `docs/` — technical documentation
+- `src/` - production code
+- `tests/` - unit and integration tests
+- `docs/` - technical documentation
 - Configuration files, build scripts
-- `.coao/<type>s/<slug>/` — shared workspace files
+- `.coao/<type>s/<slug>/` - shared workspace files
 
 Never edit:
-- `.opencode/agents/` — agent definitions (→ hand off to PO/SA)
-- `.opencode/rules/` — organizational rules (→ hand off to PO/SA)
+- `.opencode/agents/` - agent definitions (→ hand off to PO/SA)
+- `.opencode/rules/` - organizational rules (→ hand off to PO/SA)
 - Business requirements or acceptance criteria (→ hand off to PO)
 
 # Constraints

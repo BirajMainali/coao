@@ -32,11 +32,11 @@ Everything related to the work item must remain inside this workspace until the 
 
 ```
 .coao/<type>s/<slug>/
-├── context.md              — Single living document (all roles contribute)
-├── decisions.md            — Decision log (shared)
-├── research.md             — Investigation notes (shared)
-├── attachments/            — Supporting files (shared)
-└── knowledge-candidates/   — Findings flagged for potential promotion (shared)
+├── context.md              - Single living document (all roles contribute)
+├── decisions.md            - Decision log (shared)
+├── research.md             - Investigation notes (shared)
+├── attachments/            - Supporting files (shared)
+└── knowledge-candidates/   - Findings flagged for potential promotion (shared)
 ```
 
 All agents contribute to the same shared files.
@@ -49,14 +49,14 @@ The required contents vary by work item type. See @.opencode/rules/operations/wo
 
 Sections
 
-- **Summary** — what is being built and why
-- **Current Status** — who is working, current phase, progress
-- **Requirements & User Stories** — what needs to be delivered
-- **Design & Architecture** — how it will be built
-- **Implementation Notes** — progress and decisions during coding
-- **Validation & QA Results** — testing evidence and release confidence
-- **Open Questions & Risks** — unresolved items and known blockers
-- **Next Actions** — what should happen next
+- **Summary** - what is being built and why
+- **Current Status** - who is working, current phase, progress
+- **Requirements & User Stories** - what needs to be delivered
+- **Design & Architecture** - how it will be built
+- **Implementation Notes** - progress and decisions during coding
+- **Validation & QA Results** - testing evidence and release confidence
+- **Open Questions & Risks** - unresolved items and known blockers
+- **Next Actions** - what should happen next
 
 Every agent must read `context.md` before beginning work and update it before completing work.
 

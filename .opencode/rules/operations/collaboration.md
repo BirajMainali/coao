@@ -109,7 +109,7 @@ Never resolve disagreement through opinion alone.
 
 ## Consultation Model
 
-Agents are self-contained and work-item-based — not sequential pipeline workers.
+Agents are self-contained and work-item-based - not sequential pipeline workers.
 
 Each agent owns its domain end-to-end. When an agent encounters work outside its domain, it consults the appropriate agent directly rather than handing off ownership.
 
@@ -132,7 +132,7 @@ Each agent owns its domain end-to-end. When an agent encounters work outside its
 ### Rules
 
 - You own your work item from start to finish. Consulting another agent does not transfer ownership.
-- Do not perform work that belongs to another agent's domain — consult instead.
+- Do not perform work that belongs to another agent's domain - consult instead.
 - Before consulting, research independently first. Consult with specific questions, not vague requests.
 - After consulting, update your own artifacts with what you learned.
 

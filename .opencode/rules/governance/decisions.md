@@ -41,7 +41,7 @@ Written to `.coao/<type>s/<slug>/<role>/decisions/`.
 
 These support the current work item. They are archived with the workspace and are not expected to be read again unless the work item resumes.
 
-### Architecture Decision Records — ADRs (organizational)
+### Architecture Decision Records - ADRs (organizational)
 
 Promoted to `knowledge/decisions/` at the repository root.
 

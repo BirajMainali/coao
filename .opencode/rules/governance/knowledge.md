@@ -60,11 +60,11 @@ Knowledge persists across work items and survives workspace archiving.
 
 ```
 knowledge/
-├── decisions/       — Architecture Decision Records (ADRs)
-├── standards/       — Organizational standards and conventions
-├── patterns/        — Reusable design and implementation patterns
-├── runbooks/        — Operational procedures and troubleshooting
-└── lessons/         — Retrospective insights and lessons learned
+├── decisions/       - Architecture Decision Records (ADRs)
+├── standards/       - Organizational standards and conventions
+├── patterns/        - Reusable design and implementation patterns
+├── runbooks/        - Operational procedures and troubleshooting
+└── lessons/         - Retrospective insights and lessons learned
 ```
 
 ### Classification Guide
@@ -103,7 +103,7 @@ Collect (during work item) → Curate (knowledge review) → Promote (write to k
 
 ---
 
-### Stage 1 — Collect (continuous, during work item)
+### Stage 1 - Collect (continuous, during work item)
 
 Every agent continuously watches for reusable findings during their work.
 
@@ -112,37 +112,37 @@ When an agent discovers something potentially reusable:
 2. Or drop a file in the work-item-level `knowledge-candidates/` directory
 3. Include: what was found, why it's reusable, and where the evidence lives
 
-Agents should also check existing knowledge during research — if they find outdated or incorrect knowledge, flag it in `knowledge-candidates/` with prefix `[KNOWLEDGE-STALE]`.
+Agents should also check existing knowledge during research - if they find outdated or incorrect knowledge, flag it in `knowledge-candidates/` with prefix `[KNOWLEDGE-STALE]`.
 
-### Stage 2 — Curate (at work item completion)
+### Stage 2 - Curate (at work item completion)
 
 During the Knowledge Review phase (after Work Item Complete, before Workspace Archived), the last active agent:
 
-1. **Collect candidates** — read `knowledge-candidates/` and grep for `[KNOWLEDGE-CANDIDATE]` in all role `research/` and `artifacts/`
-2. **Evaluate against criteria** — each candidate must be:
+1. **Collect candidates** - read `knowledge-candidates/` and grep for `[KNOWLEDGE-CANDIDATE]` in all role `research/` and `artifacts/`
+2. **Evaluate against criteria** - each candidate must be:
    - Reusable across multiple work items
    - Evidence-based (backed by real results)
    - Valuable beyond the current work item
    - Stable (unlikely to change frequently)
    - Relevant to future decision-making
-3. **Deduplicate** — search `knowledge/` for duplicates or related entries
-4. **Categorize** — use the Classification Guide to map each finding to the right `knowledge/` subdirectory
+3. **Deduplicate** - search `knowledge/` for duplicates or related entries
+4. **Categorize** - use the Classification Guide to map each finding to the right `knowledge/` subdirectory
 
-### Stage 3 — Promote (at work item completion)
+### Stage 3 - Promote (at work item completion)
 
 For each curated candidate:
 
-1. **Improve or create** — write to the appropriate `knowledge/` subdirectory. Improve existing entries rather than creating duplicates.
-2. **Link to evidence** — reference the workspace path where the original finding lives
-3. **Record in context.md** — note what was promoted and where it now lives
+1. **Improve or create** - write to the appropriate `knowledge/` subdirectory. Improve existing entries rather than creating duplicates.
+2. **Link to evidence** - reference the workspace path where the original finding lives
+3. **Record in context.md** - note what was promoted and where it now lives
 
-### Stage 4 — Validate (ongoing across future work items)
+### Stage 4 - Validate (ongoing across future work items)
 
 Knowledge is only proven when it survives real use:
 
 1. **Future agents reference `knowledge/`** before starting work in a domain
 2. **If knowledge is inaccurate or outdated**, the agent flags it with `[KNOWLEDGE-STALE]` in the current work item's `knowledge-candidates/`
-3. **Stale knowledge is reviewed** during the next curation cycle — use the Demotion Guide to decide whether to update, deprecate, or archive
+3. **Stale knowledge is reviewed** during the next curation cycle - use the Demotion Guide to decide whether to update, deprecate, or archive
 4. **Promoted knowledge that is never referenced** after 3 work items is archived (`knowledge/_archived/`)
 
 ### What stays as memory

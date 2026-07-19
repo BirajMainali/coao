@@ -1,6 +1,6 @@
 ---
 name: git-branching
-description: Consistent Git branching conventions — branch from higher branches, safe merge workflow, human-style commits. Use when creating branches, merging, or committing.
+description: Consistent Git branching conventions - branch from higher branches, safe merge workflow, human-style commits. Use when creating branches, merging, or committing.
 ---
 
 # Git Branching
@@ -28,7 +28,7 @@ Use this skill when:
 
 Always branch from the highest applicable production or near-production branch.
 
-- `main` or `master` or `prod` — whichever is designated as the production branch.
+- `main` or `master` or `prod` - whichever is designated as the production branch.
 - Confirm the production branch name on first interaction and memorize it for the session.
 
 ### 2. Branch Naming
@@ -107,7 +107,7 @@ git fetch origin
 git rebase origin/master
 ```
 
-If rebase has conflicts, resolve them in the feature branch — this is normal. The feature branch should always be current against its source.
+If rebase has conflicts, resolve them in the feature branch - this is normal. The feature branch should always be current against its source.
 
 ### 2. Create Merge Branch
 
@@ -131,9 +131,9 @@ When conflicts appear:
 git status
 
 # Open each conflicted file, find markers:
-#   <<<<<<< HEAD        — your side (merge branch / develop base)
-#   =======             — divider
-#   >>>>>>> feat/...    — their side (feature branch)
+#   <<<<<<< HEAD        - your side (merge branch / develop base)
+#   =======             - divider
+#   >>>>>>> feat/...    - their side (feature branch)
 ```
 
 Edit each conflicted file to keep the correct code, remove markers, then:
@@ -178,7 +178,7 @@ git branch -d merge/master/my-feature
 
 ## Why This Workflow
 
-- If `feat/master/user-fix` is merged directly into `develop` and a conflict occurs, the conflict resolution lives on the feature branch. Patching that to `master` becomes risky — it effectively moves `develop` into `master`.
+- If `feat/master/user-fix` is merged directly into `develop` and a conflict occurs, the conflict resolution lives on the feature branch. Patching that to `master` becomes risky - it effectively moves `develop` into `master`.
 - With a merge branch, conflict resolution is isolated. The feature branch remains clean and can still be merged elsewhere.
 - This applies to all environment branches, not just `develop`.
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Work comes in different shapes. A bug fix, a feature, a research spike — each has a different lifecycle, different agent involvement, and different completion criteria.
+Work comes in different shapes. A bug fix, a feature, a research spike - each has a different lifecycle, different agent involvement, and different completion criteria.
 
 Every unit of work in this organization is a **work item** with a declared type. The type determines how the item is handled.
 
@@ -64,11 +64,11 @@ All types get a workspace directory. The required contents vary:
 |------|-----------|-------------|------------|-------------|-------------------|
 | project | ✓ | ✓ | optional | ✓ | ✓ (curated quarterly) |
 | feature | ✓ | ✓ | optional | ✓ | ✓ (curated on completion) |
-| fix | ✓ | optional | — | optional | — |
-| task | ✓ | — | — | — | — |
+| fix | ✓ | optional | - | optional | - |
+| task | ✓ | - | - | - | - |
 | spike | ✓ | ✓ | ✓ | ✓ | ✓ (curated on completion) |
-| chore | ✓ | — | — | — | — |
-| release | ✓ | ✓ | — | ✓ | — |
+| chore | ✓ | - | - | - | - |
+| release | ✓ | ✓ | - | ✓ | - |
 
 Files not listed for a type should not be created.
 
@@ -106,13 +106,13 @@ Project-type items archive when the project ends. All other types archive immedi
 
 ```
 .coao/
-├── projects/       — Long-lived product workspaces
-├── features/       — Feature delivery workspaces
-├── fixes/          — Bug fix workspaces
-├── tasks/          — Atomic action workspaces
-├── spikes/         — Research workspaces
-├── chores/         — Maintenance workspaces
-└── releases/       — Release workspaces
+├── projects/       - Long-lived product workspaces
+├── features/       - Feature delivery workspaces
+├── fixes/          - Bug fix workspaces
+├── tasks/          - Atomic action workspaces
+├── spikes/         - Research workspaces
+├── chores/         - Maintenance workspaces
+└── releases/       - Release workspaces
 ```
 
 Every workspace under these directories follows the same internal layout.

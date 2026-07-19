@@ -23,9 +23,9 @@ Artifacts preserve decisions, progress, and outcomes across sessions, agents, an
 
 | Artifact | Purpose | Owner |
 |----------|---------|-------|
-| `context.md` | Work item state, status, and substance | Shared — all agents update relevant sections |
-| `decisions.md` | Decision records and reasoning | Shared — any agent records decisions |
-| `research.md` | Supporting investigation and evidence | Shared — any agent records findings |
+| `context.md` | Work item state, status, and substance | Shared - all agents update relevant sections |
+| `decisions.md` | Decision records and reasoning | Shared - any agent records decisions |
+| `research.md` | Supporting investigation and evidence | Shared - any agent records findings |
 
 ---
 

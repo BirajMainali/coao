@@ -12,7 +12,7 @@ description: >
 
 Produce a single HTML file that the user opens in a browser, interacts with, and gives feedback on.
 
-Everything in this skill — research, elicitation, design, validation — exists solely to make that HTML file accurate and reviewable. Nothing else matters.
+Everything in this skill - research, elicitation, design, validation - exists solely to make that HTML file accurate and reviewable. Nothing else matters.
 
 ---
 
@@ -29,15 +29,15 @@ Do not use when the design is already settled and ready for production.
 ### What the skill delivers
 
 A throwaway HTML file that:
-- Simulates domain behavior — taxonomy, calculations, state transitions, success and failure paths
-- Matches the project's design language (fonts, colors, spacing, alignment) — discovered from the codebase, not guessed
-- Is openable directly in a browser — no server, no build step
-- Lets the user click, type, and see results — the entire point is interaction
+- Simulates domain behavior - taxonomy, calculations, state transitions, success and failure paths
+- Matches the project's design language (fonts, colors, spacing, alignment) - discovered from the codebase, not guessed
+- Is openable directly in a browser - no server, no build step
+- Lets the user click, type, and see results - the entire point is interaction
 
 ### Constraints
 
 - Vanilla HTML/CSS/JS only. No frameworks, no build tools, no npm.
-- Output to `prototypes/<slug>/index.html` — exactly one deliverable
+- Output to `prototypes/<slug>/index.html` - exactly one deliverable
 - If splitting into separate files helps readability, do it. But index.html must be openable standalone.
 - Throwaway code. Do not optimize for production.
 
@@ -55,8 +55,8 @@ A throwaway HTML file that:
 ### 1. Discover
 
 Research the codebase for:
-- Design tokens — CSS custom properties, fonts, colors, spacing, radii, shadows
-- Domain terms — entity names, actions, statuses from types, routes, schemas
+- Design tokens - CSS custom properties, fonts, colors, spacing, radii, shadows
+- Domain terms - entity names, actions, statuses from types, routes, schemas
 
 Check `prototypes/<slug>/index.html`. If it exists, skip to Validate.
 
@@ -83,13 +83,13 @@ Record answers in `decisions.md`. Synthesize into a data model, state machine, b
 Write `prototypes/<slug>/index.html`. This is the only deliverable.
 
 The HTML file must:
-- Be openable by double-click (file:// protocol) — no server required
+- Be openable by double-click (file:// protocol) - no server required
 - Use design tokens discovered in Discover phase
 - Include a way for the user to trigger both success and failure paths (e.g., a checkbox for "simulate error")
-- Be visually complete — the user should understand the flow immediately
+- Be visually complete - the user should understand the flow immediately
 - Work in a modern browser
 
-Use a simple reactive state pattern — `setState()` triggers `render()`. Simulate async operations with `setTimeout`.
+Use a simple reactive state pattern - `setState()` triggers `render()`. Simulate async operations with `setTimeout`.
 
 Consult Solution Architect for complex logic. Consult Software Engineer for non-trivial patterns. Their output must end up in the same HTML file.
 

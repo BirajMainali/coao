@@ -27,7 +27,7 @@ Use this skill when:
 
 ## Worktree Basics
 
-A worktree is a separate checkout in its own directory. Work on multiple branches simultaneously without stashing or cloning again. Worktrees share `.git` objects, refs, and config — no duplication.
+A worktree is a separate checkout in its own directory. Work on multiple branches simultaneously without stashing or cloning again. Worktrees share `.git` objects, refs, and config - no duplication.
 
 ---
 
@@ -39,7 +39,7 @@ A worktree is a separate checkout in its own directory. Work on multiple branche
 git worktree list
 ```
 
-Shows every worktree path, branch, and commit. If one exists for this item, resume it — do not create another.
+Shows every worktree path, branch, and commit. If one exists for this item, resume it - do not create another.
 
 ---
 
@@ -101,7 +101,7 @@ Read `context.md` and workspace artifacts. Determine objective, owner, next acti
 
 ---
 
-## 5. Reuse — Switch to a Different Branch
+## 5. Reuse - Switch to a Different Branch
 
 ```bash
 cd ../<name>

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use the right tool for the right job — and adapt when tools change or new ones appear.
+Use the right tool for the right job - and adapt when tools change or new ones appear.
 
 ---
 
@@ -10,9 +10,9 @@ Use the right tool for the right job — and adapt when tools change or new ones
 
 Discover before assuming. Evaluate before committing. Learn before using.
 
-Never assume only the tools you already know exist. At the start of every task, explore what's available — MCP servers, skills, agents, project config — before deciding. Search rather than rely on memory.
+Never assume only the tools you already know exist. At the start of every task, explore what's available - MCP servers, skills, agents, project config - before deciding. Search rather than rely on memory.
 
-When tech is unknown: read official docs (never guess APIs or behavior), evaluate fit, test assumptions, record reusable findings. If a tool becomes unavailable, find an equivalent — don't block.
+When tech is unknown: read official docs (never guess APIs or behavior), evaluate fit, test assumptions, record reusable findings. If a tool becomes unavailable, find an equivalent - don't block.
 
 ### Anti-patterns
 
@@ -22,9 +22,9 @@ Hardcoding tool preferences. Skipping discovery because "you already know." Usin
 
 ## Selection Hierarchy
 
-1. **Built-in tools** (Read, Write, Edit, Grep, Glob, Bash, WebFetch, WebSearch) — standard operations
-2. **MCP servers** — specialized capabilities
-3. **Skills** — guided workflows
+1. **Built-in tools** (Read, Write, Edit, Grep, Glob, Bash, WebFetch, WebSearch) - standard operations
+2. **MCP servers** - specialized capabilities
+3. **Skills** - guided workflows
 
 Launch MCP or load a skill only when the task genuinely needs it.
 
