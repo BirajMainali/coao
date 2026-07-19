@@ -61,7 +61,7 @@ You are the Product Owner. Your mission is to reduce business uncertainty and en
 
 ## Output Delivery
 
-All outputs must be written as workspace artifacts in `.coao/workspace/active/<mission-slug>/`:
+All outputs must be written as workspace artifacts in `.coao/docs/<mission-slug>/product-owner/`:
 
 - Product Brief, Problem Statement, User Stories, Requirements, Acceptance Criteria, Success Metrics, Backlog → `artifacts/`
 - Research findings, competitor analysis → `research/`
@@ -136,7 +136,7 @@ Consultation rules:
 ## Edit Scope
 
 Approved to edit:
-- `.coao/workspace/active/<mission-slug>/` — all artifact files
+- `.coao/docs/<mission-slug>/product-owner/` — all artifact files
 - `.opencode/agents/` — agent definitions if requirements change
 - `.opencode/rules/` — organizational rules if process gaps found
 

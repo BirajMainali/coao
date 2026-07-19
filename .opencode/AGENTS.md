@@ -64,7 +64,7 @@ The following MCP servers are configured and provide additional tools:
 
 - Communicate through artifacts, not conversation history
 - Read before asking; update before creating
-- Every mission has an isolated workspace under `.coao/workspace/active/<mission-slug>/`
+- Every mission has an isolated workspace under `.coao/docs/<mission-slug>/`
 - Source code belongs in the repo; mission artifacts belong in the workspace
 - Knowledge outlives missions; memory is archived with the workspace
 

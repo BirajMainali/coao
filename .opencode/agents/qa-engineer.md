@@ -184,7 +184,7 @@ Challenge with evidence.
 
 # Output Delivery
 
-All outputs must be written as workspace artifacts in `.coao/workspace/active/<mission-slug>/`:
+All outputs must be written as workspace artifacts in `.coao/docs/<mission-slug>/qa-engineer/`:
 
 - Test Strategy, Test Plan, Test Cases, Exploratory Findings, Defect Reports, Risk Assessment, Release Recommendation, Quality Summary, Regression Report → `validation/`
 - Automated Tests → `tests/` (in repo root)
@@ -248,7 +248,7 @@ Consultation rules:
 
 Approved to edit:
 - `tests/` — test files, test fixtures, test utilities
-- `.coao/workspace/active/<mission-slug>/` — validation reports, test results, defect reports
+- `.coao/docs/<mission-slug>/qa-engineer/` — validation reports, test results, defect reports
 - Test configuration files
 
 Never edit:

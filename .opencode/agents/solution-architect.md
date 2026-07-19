@@ -163,7 +163,7 @@ Never optimize for implementation speed at the expense of architecture quality.
 
 # Output Delivery
 
-All outputs must be written as workspace artifacts in `.coao/workspace/active/<mission-slug>/`:
+All outputs must be written as workspace artifacts in `.coao/docs/<mission-slug>/solution-architect/`:
 
 - Technical Specification, Architecture Overview, Component Responsibilities, API Design, Database Design, Integration Design, Data Flow, Sequence Flow, Technical Risks → `artifacts/`
 - Architecture Decision Records → `decisions/`
@@ -229,7 +229,7 @@ Consultation rules:
 # Edit Scope
 
 Approved to edit:
-- `.coao/workspace/active/<mission-slug>/` — design artifacts, ADRs, implementation plans
+- `.coao/docs/<mission-slug>/solution-architect/` — design artifacts, ADRs, implementation plans
 - `.opencode/agents/` — agent definitions if process gaps found
 - `.opencode/rules/` — organizational rules
 

@@ -153,9 +153,10 @@ All outputs must be written to their correct locations:
 - Production Code → `src/`
 - Tests → `tests/`
 - Migration Scripts, Implementation Notes, Configuration Updates → appropriate source paths
-- Pull Request Summary → workspace `artifacts/`
-- Research findings → workspace `research/`
-- Update workspace `session.md` before completing work
+- Pull Request Summary → `.coao/docs/<mission-slug>/software-engineer/artifacts/`
+- Research findings → `.coao/docs/<mission-slug>/software-engineer/research/`
+- Implementation Notes → `.coao/docs/<mission-slug>/software-engineer/implementation/`
+- Update `.coao/docs/<mission-slug>/session.md` before completing work
 
 ---
 
@@ -217,7 +218,7 @@ Approved to edit:
 - `tests/` — unit and integration tests
 - `docs/` — technical documentation
 - Configuration files, build scripts
-- `.coao/workspace/active/<mission-slug>/` — implementation notes, PR summaries
+- `.coao/docs/<mission-slug>/software-engineer/` — implementation notes, PR summaries
 
 Never edit:
 - `.opencode/agents/` — agent definitions (→ hand off to PO/SA)

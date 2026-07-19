@@ -30,7 +30,7 @@ Examples
 - Temporary decisions
 - Working assumptions
 
-Memory belongs in `.coao/workspace/active/<mission-slug>/`.
+Memory belongs in `.coao/docs/<mission-slug>/`.
 
 Memory is archived with the mission and never promoted to knowledge.
 

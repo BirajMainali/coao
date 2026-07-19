@@ -18,11 +18,11 @@ Every mission creates a unique workspace.
 
 Example
 
-.coao/workspace/active/<missions-slug>/
+.coao/docs/<mission-slug>/
 
 Example
 
-.coao/workspace/active/payment-service-v2/
+.coao/docs/payment-service-v2/
 
 Everything related to the mission must remain inside this workspace until the mission is complete.
 
@@ -30,18 +30,32 @@ Everything related to the mission must remain inside this workspace until the mi
 
 # Workspace Layout
 
-.coao/workspace/active/<mission-slug>/
+.coao/docs/<mission-slug>/
 
-├── session.md
-├── artifacts/
-├── research/
-├── implementation/
-├── validation/
-├── decisions/
-├── handoffs/
-└── attachments/
+├── session.md              — Mission state (shared)
+├── handoffs/               — Inter-agent communication (shared)
+├── attachments/            — Supporting files (shared)
+├── product-owner/
+│   ├── artifacts/
+│   ├── research/
+│   └── decisions/
+├── solution-architect/
+│   ├── artifacts/
+│   ├── research/
+│   ├── decisions/
+│   └── implementation/
+├── software-engineer/
+│   ├── artifacts/
+│   ├── research/
+│   ├── decisions/
+│   └── implementation/
+└── qa-engineer/
+    ├── artifacts/
+    ├── research/
+    ├── decisions/
+    └── validation/
 
-Each directory has a single responsibility.
+Each agent owns files within its role directory.
 
 ---
 
@@ -71,11 +85,11 @@ Every agent must update this file before completing work.
 
 ---
 
-# artifacts/
+# artifacts/ (within each role directory)
 
 Purpose
 
-Contains mission deliverables.
+Contains mission deliverables for that agent's domain.
 
 Artifacts describe WHAT is being built.
 
@@ -97,11 +111,11 @@ Artifacts become the communication contract between agents.
 
 ---
 
-# research/
+# research/ (within each role directory)
 
 Purpose
 
-Contains supporting investigation.
+Contains supporting investigation for that agent's domain.
 
 Research explains WHY decisions were made.
 
@@ -121,7 +135,7 @@ Research is never considered organizational knowledge until promoted.
 
 ---
 
-# implementation/
+# implementation/ (within solution-architect and software-engineer)
 
 Purpose
 
@@ -145,7 +159,7 @@ Source code belongs in the repository.
 
 ---
 
-# validation/
+# validation/ (within qa-engineer)
 
 Purpose
 
@@ -165,11 +179,11 @@ Validation should demonstrate confidence, not merely completion.
 
 ---
 
-# decisions/
+# decisions/ (within each role directory)
 
 Purpose
 
-Contains important mission decisions.
+Contains important decisions made by that agent.
 
 Each decision should record
 
@@ -180,11 +194,11 @@ Each decision should record
 - Trade-offs
 - Consequences
 
-Mission decisions remain local unless promoted into organizational ADRs.
+Mission decisions remain within the role directory unless promoted into organizational ADRs.
 
 ---
 
-# handoffs/
+# handoffs/ (mission-level shared)
 
 Purpose
 
@@ -231,23 +245,23 @@ Mission status
 
 Mission deliverables
 
-→ artifacts/
+→ artifacts/ (within your role directory)
 
 Supporting investigation
 
-→ research/
+→ research/ (within your role directory)
 
 Implementation planning
 
-→ implementation/
+→ implementation/ (within solution-architect or software-engineer)
 
 Validation evidence
 
-→ validation/
+→ validation/ (within qa-engineer)
 
 Mission decisions
 
-→ decisions/
+→ decisions/ (within your role directory)
 
 Ownership transitions
 
@@ -312,7 +326,7 @@ Mission Created
 
 ↓
 
-Workspace Initialized (`.coao/workspace/active/<mission-slug>/`)
+Workspace Initialized (`.coao/docs/<mission-slug>/`)
 
 ↓
 

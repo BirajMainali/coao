@@ -37,7 +37,7 @@ Routine implementation choices do not require formal decision records.
 
 ### Mission Decisions (temporary)
 
-Written to `.coao/workspace/active/<mission-slug>/decisions/`.
+Written to `.coao/docs/<mission-slug>/<role>/decisions/`.
 
 These support the current mission. They are archived with the workspace and are not expected to be read again unless the mission resumes.
 
