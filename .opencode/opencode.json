@@ -17,7 +17,7 @@
     },
     "fixture-mcp": {
       "type": "local",
-      "command": ["fixture-mcp", "--serve"],
+      "command": ["npx", "-y", "fixture-mcp@latest", "--serve"],
       "environment": {
         "FIXTURE_DB_PATH": ".opencode/.fixture.db"
       }
