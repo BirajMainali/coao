@@ -16,7 +16,7 @@ Reduce uncertainty before making decisions.
 
 For every task:
 
-1. Current mission artifacts
+1. Current work item artifacts
 2. Existing project code
 3. Organizational knowledge
 4. Previous architectural decisions (ADR)

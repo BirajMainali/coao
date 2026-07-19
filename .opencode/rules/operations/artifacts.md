@@ -23,7 +23,7 @@ Artifacts preserve decisions, progress, and outcomes across sessions, agents, an
 
 | Artifact | Purpose | Owner |
 |----------|---------|-------|
-| `context.md` | Mission state, status, and substance | Shared — all agents update relevant sections |
+| `context.md` | Work item state, status, and substance | Shared — all agents update relevant sections |
 | `decisions.md` | Decision records and reasoning | Shared — any agent records decisions |
 | `research.md` | Supporting investigation and evidence | Shared — any agent records findings |
 
@@ -51,7 +51,7 @@ Artifacts are shared across all agents.
 
 Each agent owns the sections within `context.md` that correspond to their domain:
 
-- Product Owner → Mission Summary, Requirements & User Stories
+- Product Owner → Summary, Requirements & User Stories
 - Solution Architect → Design & Architecture
 - Software Engineer → Implementation Notes
 - QA Engineer → Validation & QA Results
@@ -73,6 +73,6 @@ Reference artifacts instead of repeating information.
 
 ## Success
 
-A new agent should understand the mission by reading artifacts alone.
+A new agent should understand the work item by reading artifacts alone.
 
 Artifacts should contain everything needed to continue work without referring to conversation history.

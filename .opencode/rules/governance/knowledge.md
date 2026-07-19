@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Ensure the organization becomes smarter after every mission.
+Ensure the organization becomes smarter after every work item.
 
 Knowledge is a long-term organizational asset.
 
@@ -16,9 +16,9 @@ Knowledge supports future decisions.
 
 ### Memory
 
-Memory is mission-specific.
+Memory is work-item-specific.
 
-It captures information needed to complete the current mission.
+It captures information needed to complete the current work item.
 
 Examples
 
@@ -30,9 +30,9 @@ Examples
 - Temporary decisions
 - Working assumptions
 
-Memory belongs in `.coao/docs/<mission-slug>/`.
+Memory belongs in `.coao/<type>s/<slug>/`.
 
-Memory is archived with the mission and never promoted to knowledge.
+Memory is archived with the workspace and never promoted to knowledge.
 
 ---
 
@@ -40,7 +40,7 @@ Memory is archived with the mission and never promoted to knowledge.
 
 Knowledge is reusable organizational intelligence.
 
-It should improve future missions.
+It should improve future work items.
 
 Examples
 
@@ -54,7 +54,7 @@ Examples
 
 Knowledge lives in `knowledge/` at the repository root.
 
-Knowledge persists across missions and survives workspace archiving.
+Knowledge persists across work items and survives workspace archiving.
 
 ### Knowledge Store Structure
 
@@ -64,7 +64,7 @@ knowledge/
 ├── standards/       — Organizational standards and conventions
 ├── patterns/        — Reusable design and implementation patterns
 ├── runbooks/        — Operational procedures and troubleshooting
-└── lessons/         — Post-mission lessons learned
+└── lessons/         — Retrospective insights and lessons learned
 ```
 
 ### Classification Guide
@@ -89,7 +89,7 @@ When stale knowledge is flagged (`[KNOWLEDGE-STALE]`):
 | Still accurate but missing context | Update with new evidence |
 | Partially wrong in a newer version | Add version note, mark superseded, link to new entry |
 | Completely wrong or obsolete | Mark as `deprecated` with reason and date |
-| Never referenced in 3+ missions | Archive (move to `knowledge/_archived/`) |
+| Never referenced in 3+ work items | Archive (move to `knowledge/_archived/`) |
 
 ---
 
@@ -98,37 +98,37 @@ When stale knowledge is flagged (`[KNOWLEDGE-STALE]`):
 Not all memory becomes knowledge. Promotion follows a staged pipeline:
 
 ```
-Collect (during mission) → Curate (knowledge review) → Promote (write to knowledge/) → Validate (future missions)
+Collect (during work item) → Curate (knowledge review) → Promote (write to knowledge/) → Validate (future work items)
 ```
 
 ---
 
-### Stage 1 — Collect (continuous, during mission)
+### Stage 1 — Collect (continuous, during work item)
 
 Every agent continuously watches for reusable findings during their work.
 
 When an agent discovers something potentially reusable:
 1. Write a brief note in their role's `research/` with the prefix `[KNOWLEDGE-CANDIDATE]`
-2. Or drop a file in the mission-level `knowledge-candidates/` directory
+2. Or drop a file in the work-item-level `knowledge-candidates/` directory
 3. Include: what was found, why it's reusable, and where the evidence lives
 
 Agents should also check existing knowledge during research — if they find outdated or incorrect knowledge, flag it in `knowledge-candidates/` with prefix `[KNOWLEDGE-STALE]`.
 
-### Stage 2 — Curate (at mission completion)
+### Stage 2 — Curate (at work item completion)
 
-During the Knowledge Review phase (after Mission Complete, before Workspace Archived), the last active agent:
+During the Knowledge Review phase (after Work Item Complete, before Workspace Archived), the last active agent:
 
 1. **Collect candidates** — read `knowledge-candidates/` and grep for `[KNOWLEDGE-CANDIDATE]` in all role `research/` and `artifacts/`
 2. **Evaluate against criteria** — each candidate must be:
-   - Reusable across multiple missions
+   - Reusable across multiple work items
    - Evidence-based (backed by real results)
-   - Valuable beyond the current mission
+   - Valuable beyond the current work item
    - Stable (unlikely to change frequently)
    - Relevant to future decision-making
 3. **Deduplicate** — search `knowledge/` for duplicates or related entries
 4. **Categorize** — use the Classification Guide to map each finding to the right `knowledge/` subdirectory
 
-### Stage 3 — Promote (at mission completion)
+### Stage 3 — Promote (at work item completion)
 
 For each curated candidate:
 
@@ -136,14 +136,14 @@ For each curated candidate:
 2. **Link to evidence** — reference the workspace path where the original finding lives
 3. **Record in context.md** — note what was promoted and where it now lives
 
-### Stage 4 — Validate (ongoing across future missions)
+### Stage 4 — Validate (ongoing across future work items)
 
 Knowledge is only proven when it survives real use:
 
 1. **Future agents reference `knowledge/`** before starting work in a domain
-2. **If knowledge is inaccurate or outdated**, the agent flags it with `[KNOWLEDGE-STALE]` in the current mission's `knowledge-candidates/`
+2. **If knowledge is inaccurate or outdated**, the agent flags it with `[KNOWLEDGE-STALE]` in the current work item's `knowledge-candidates/`
 3. **Stale knowledge is reviewed** during the next curation cycle — use the Demotion Guide to decide whether to update, deprecate, or archive
-4. **Promoted knowledge that is never referenced** after 3 missions is archived (`knowledge/_archived/`)
+4. **Promoted knowledge that is never referenced** after 3 work items is archived (`knowledge/_archived/`)
 
 ### What stays as memory
 
@@ -153,7 +153,7 @@ Knowledge is only proven when it survives real use:
 - Handoff documents and ownership records
 - Anything that does not meet the promotion criteria
 
-Memory is archived with the workspace. It is never deleted but is not expected to be read again unless the mission is resumed.
+Memory is archived with the workspace. It is never deleted but is not expected to be read again unless the work item is resumed.
 
 ---
 
@@ -172,6 +172,6 @@ Memory is archived with the workspace. It is never deleted but is not expected t
 
 Future agents should solve similar problems faster because organizational knowledge continues to improve.
 
-The workspace should contain mission memory.
+The workspace should contain work item memory.
 
 The knowledge base (`knowledge/`) should contain only reusable organizational intelligence.

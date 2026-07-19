@@ -1,13 +1,13 @@
 ---
 name: git-worktree
-description: Create, resume, validate, and maintain Git worktrees for mission-based development. Use whenever work requires an isolated development environment.
+description: Create, resume, validate, and maintain Git worktrees for work-item-based development. Use whenever work requires an isolated development environment.
 ---
 
 # Git Worktree
 
 ## Purpose
 
-Provide a consistent workflow for managing Git worktrees throughout a mission.
+Provide a consistent workflow for managing Git worktrees throughout a work item.
 
 This skill standardizes how development workspaces are created, resumed, and maintained.
 
@@ -17,11 +17,11 @@ This skill standardizes how development workspaces are created, resumed, and mai
 
 Use this skill when:
 
-- Starting a new mission.
-- Resuming an existing mission.
-- Switching between missions.
-- Preparing a mission for handoff.
-- Completing a mission.
+- Starting a new work item.
+- Resuming an existing work item.
+- Switching between work items.
+- Preparing a work item for handoff.
+- Completing a work item.
 
 ---
 
@@ -50,7 +50,7 @@ The worktree should contain:
 
 - Feature branch
 - Repository checkout
-- Mission workspace
+- Work item workspace
 - Session tracking
 
 Initialize the workspace.
@@ -58,7 +58,7 @@ Initialize the workspace.
 Example
 workspace/
     active/
-        <mission-slug>/
+        <work-item-slug>/
 
 ---
 
@@ -111,7 +111,7 @@ Workspace is the operational source of truth.
 
 Before leaving the workspace:
 
-- Update mission state.
+- Update work item state.
 - Record remaining work.
 - Record assumptions.
 - Record risks.
@@ -121,18 +121,32 @@ Before leaving the workspace:
 
 ## 7. Archive
 
-When the mission is complete:
+When the work item is complete:
 
 - Review artifacts.
-- Recommend knowledge promotion.
+- Promote knowledge (per type rules in work-items.md).
 - Archive workspace.
 - Remove worktree only when explicitly instructed.
 
 ---
 
+## Directory Convention
+
+Work item workspaces live at `.coao/<type>s/<slug>/` where `<type>` is one of:
+
+- `projects`
+- `features`
+- `fixes`
+- `tasks`
+- `spikes`
+- `chores`
+- `releases`
+
+---
+
 ## Success
 
-Every mission should have exactly one active worktree.
+Every work item should have exactly one active worktree.
 
 Every worktree should contain a complete and resumable workspace.
 

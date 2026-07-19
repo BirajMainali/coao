@@ -4,7 +4,7 @@
 
 Sessions may end.
 
-Missions continue.
+Work continues.
 
 ---
 
@@ -12,7 +12,7 @@ Missions continue.
 
 Every session should record:
 
-- Mission
+- Work item slug and type
 - Current objective
 - Current owner
 - Current progress

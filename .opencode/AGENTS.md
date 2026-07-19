@@ -23,7 +23,7 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 - @.opencode/rules/behavior/decision-making.md — Evidence-based decision process
 - @.opencode/rules/behavior/quality.md — Deliverable quality standards
 - @.opencode/rules/behavior/research.md — Investigation and uncertainty reduction
-- @.opencode/rules/behavior/tool-selection.md — Tool, MCP server, and skill selection
+- @.opencode/rules/behavior/discipline.md — Tool & technology agnosticism, MCP server, and skill selection
 
 ### Governance
 
@@ -33,6 +33,7 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 
 ### Operations
 
+- @.opencode/rules/operations/work-items.md — Work item types, lifecycles, and agent involvement
 - @.opencode/rules/operations/workspace.md — Workspace layout and lifecycle
 - @.opencode/rules/operations/collaboration.md — Multi-agent collaboration model
 - @.opencode/rules/operations/session.md — Session continuity and recovery
@@ -49,7 +50,8 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 ## Available Skills
 
 - `caveman` — Ultra-compressed communication mode. Cuts token usage ~75%. Use `caveman` when asked for brevity.
-- `git-worktree` — Git worktree management for mission-based development.
+- `git-branching` — Consistent Git branching conventions: branch from production branches, safe merge workflow, human-style commits.
+- `git-worktree` — Git worktree management for work-item-based development.
 - `grilling` — Grills you relentlessly about a plan or design, one question at a time.
 
 ## MCP Servers
@@ -64,9 +66,9 @@ The following MCP servers are configured and provide additional tools:
 
 - Communicate through artifacts, not conversation history
 - Read before asking; update before creating
-- Every mission has an isolated workspace under `.coao/docs/<mission-slug>/`
-- Source code belongs in the repo; mission artifacts belong in the workspace
-- Knowledge outlives missions; memory is archived with the workspace
+- Every work item has an isolated workspace under `.coao/<type>s/<slug>/`
+- Source code belongs in the repo; work item artifacts belong in the workspace
+- Knowledge outlives work items; memory is archived with the workspace
 
 ## Install
 

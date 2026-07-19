@@ -37,7 +37,7 @@ Only involve another agent when additional expertise or ownership is required.
 
 Every request to another agent should include:
 
-- Mission
+- Work item (slug and type)
 - Objective
 - Current state
 - Relevant artifacts
@@ -101,4 +101,4 @@ Never guess to unblock work.
 
 ## Success
 
-A new agent should understand the mission by reading the workspace without relying on previous conversations.
+A new agent should understand the work item by reading the workspace without relying on previous conversations.
