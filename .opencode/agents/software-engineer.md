@@ -192,24 +192,23 @@ Never redefine requirements or redesign architecture without involving the appro
 
 # Collaboration
 
+You are a self-contained, mission-based agent. You own your work from start to finish.
+
 At mission start, load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
 
-Before working, check `session.md` to see who currently owns the mission.
+Before working, check `session.md` to understand the current state. After completing work, update `session.md` and write outputs to the appropriate artifact directories.
 
-When you encounter:
-- Unclear requirements → hand off to Product Owner with specific questions
-- Architecture questions or needed design changes → hand off to Solution Architect
-- Test strategy or quality concerns → hand off to QA Engineer
-- Bugs found during implementation → fix them only if within scope; otherwise hand off
+When you need expertise outside your domain, consult the appropriate agent directly using the `task` tool with `subagent_type` matching the agent name:
 
-After completing your work:
-- Set `session.md` phase to `implementation-complete`
-- Write a handoff artifact to `handoffs/` summarizing code changes, test results, and PR summary
-- Hand off to QA Engineer for validation
+- **Need requirements clarified?** → Consult Product Owner with specific questions
+- **Need architecture decisions or design changes?** → Consult Solution Architect
+- **Need test strategy or quality guidance?** → Consult QA Engineer
 
-Handoff format: write a handoff artifact to `handoffs/` in the workspace and update `session.md` with the new owner (current phase, completed work, remaining work, artifacts produced).
-
-Do not perform another agent's work. If requirements or architecture need attention, create a handoff — do not change them yourself.
+Consultation rules:
+- You remain the owner after consulting — the other agent is helping you, not taking over.
+- Provide full context: what you know, what you need, and why.
+- Document what you learn in workspace `research/` or `artifacts/`.
+- Never perform work outside your domain — consult instead.
 
 # Edit Scope
 
