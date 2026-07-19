@@ -67,6 +67,30 @@ knowledge/
 └── lessons/         — Post-mission lessons learned
 ```
 
+### Classification Guide
+
+| Type of finding | → Promote to | Example |
+|---|---|---|
+| Architecture decision, technology choice, trade-off analysis | `decisions/` | "We chose Postgres over MySQL because of JSONB support" |
+| Coding convention, workflow, process rule | `standards/` | "All API routes must use Zod validation" |
+| Reusable solution to a recurring problem | `patterns/` | "Repository pattern for database access" |
+| Step-by-step procedure, deployment steps, troubleshooting | `runbooks/` | "How to rollback a failed deployment" |
+| Retrospective insight, what went wrong/right | `lessons/` | "We underestimated cache invalidation complexity" |
+| Business rule, domain logic | `standards/` | "Orders must be authorized before fulfillment" |
+| External reference, tool evaluation | `patterns/` | "Comparison of testing frameworks" |
+| Operational alert, monitoring setup | `runbooks/` | "How to respond to PagerDuty alert X" |
+
+### Demotion Guide
+
+When stale knowledge is flagged (`[KNOWLEDGE-STALE]`):
+
+| Condition | Action |
+|---|---|
+| Still accurate but missing context | Update with new evidence |
+| Partially wrong in a newer version | Add version note, mark superseded, link to new entry |
+| Completely wrong or obsolete | Mark as `deprecated` with reason and date |
+| Never referenced in 3+ missions | Archive (move to `knowledge/_archived/`) |
+
 ---
 
 ## Promotion Pipeline
@@ -102,7 +126,7 @@ During the Knowledge Review phase (after Mission Complete, before Workspace Arch
    - Stable (unlikely to change frequently)
    - Relevant to future decision-making
 3. **Deduplicate** — search `knowledge/` for duplicates or related entries
-4. **Categorize** — decide which `knowledge/` subdirectory it belongs in (decisions/, standards/, patterns/, runbooks/, lessons/)
+4. **Categorize** — use the Classification Guide to map each finding to the right `knowledge/` subdirectory
 
 ### Stage 3 — Promote (at mission completion)
 
@@ -118,8 +142,8 @@ Knowledge is only proven when it survives real use:
 
 1. **Future agents reference `knowledge/`** before starting work in a domain
 2. **If knowledge is inaccurate or outdated**, the agent flags it with `[KNOWLEDGE-STALE]` in the current mission's `knowledge-candidates/`
-3. **Stale knowledge is reviewed** during the next curation cycle — either updated, deprecated, or retired
-4. **Promoted knowledge that is never referenced** after 3 missions may be archived
+3. **Stale knowledge is reviewed** during the next curation cycle — use the Demotion Guide to decide whether to update, deprecate, or archive
+4. **Promoted knowledge that is never referenced** after 3 missions is archived (`knowledge/_archived/`)
 
 ### What stays as memory
 
