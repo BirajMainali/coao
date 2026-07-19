@@ -8,7 +8,7 @@ This is a multi-agent engineering organization. The project defines rules, agent
   - `behavior/` — Communication, decision-making, quality, research
   - `governance/` — Decisions, knowledge, standards
   - `operations/` — Workspace, collaboration, session, handoff, artifacts
-- `.opencode/agents/` — Subagent definitions with YAML front-matter (PO, QA, SE, SA)
+- `.opencode/agents/` — Subagent definitions with YAML front-matter (PO, QA, SE, SA, TR)
 - `.opencode/skills/` — Reusable skill definitions
 - `.opencode/AGENTS.md` — Primary opencode instructions
 - `.opencode/opencode.json` — OpenCode configuration with MCP servers
@@ -46,6 +46,7 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 - `.opencode/agents/qa-engineer.md` — Quality validation and release confidence
 - `.opencode/agents/software-engineer.md` — Production implementation
 - `.opencode/agents/solution-architect.md` — Technical design and architecture
+- `.opencode/agents/true-researcher.md` — Unbiased, context-free research using web search and domain expertise (eliminates X)
 
 ## Available Skills
 
