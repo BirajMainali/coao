@@ -96,7 +96,7 @@ case "$choice" in
     echo "    └── rules/"
     ;;
 
-  ""|1)
+  1)
     TARGET=".opencode"
 
     echo ""
