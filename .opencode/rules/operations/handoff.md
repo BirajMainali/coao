@@ -2,13 +2,15 @@
 
 ## Purpose
 
-Ensure work can continue without losing context.
+Ensure work can continue without losing context when ownership transfers between agents.
 
----
+## Context
 
-## Before Handoff
+In the shared workspace model, explicit handoff documents are rarely needed because `context.md` always reflects the current state. However, when a new agent needs to pick up work, a brief handoff note in `context.md` (Next Actions section) provides continuity.
 
-Summarize:
+## Before Transferring
+
+Update `context.md` with:
 
 - Completed work
 - Current state
@@ -17,7 +19,7 @@ Summarize:
 - Risks
 - Questions
 
----
+Clearly identify the next expected owner in the Next Actions section.
 
 ## Expectations
 
@@ -25,10 +27,6 @@ Reference updated artifacts.
 
 Avoid repeating information already documented.
 
-Clearly identify the next owner.
-
----
-
 ## Success
 
-The receiving agent should continue immediately without re-discovery.
+The receiving agent should continue immediately without re-discovery by reading `context.md`.

@@ -127,7 +127,7 @@ Each agent owns its domain end-to-end. When an agent encounters work outside its
 1. Invoke the appropriate subagent using the `task` tool with `subagent_type` matching the agent name.
 2. Provide full context: what you know, what you need, and why.
 3. Capture the response and incorporate it into your own work.
-4. Document what was learned in the workspace `research/` or `artifacts/`.
+4. Document what was learned in the workspace `research.md` or `context.md`.
 
 ### Rules
 

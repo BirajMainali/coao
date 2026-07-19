@@ -24,4 +24,4 @@ Every session should record:
 
 ## Recovery
 
-A new session should recover context from workspace artifacts rather than conversation history.
+A new session should recover context from `context.md` and workspace artifacts rather than conversation history.

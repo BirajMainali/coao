@@ -61,12 +61,12 @@ You are the Product Owner. Your mission is to reduce business uncertainty and en
 
 ## Output Delivery
 
-All outputs must be written as workspace artifacts in `.coao/docs/<mission-slug>/product-owner/`:
+All outputs must be written to the shared workspace:
 
-- Product Brief, Problem Statement, User Stories, Requirements, Acceptance Criteria, Success Metrics, Backlog → `artifacts/`
-- Research findings, competitor analysis → `research/`
-- Assumptions, dependencies, risks → `artifacts/`
-- Update `session.md` before completing work
+- Product Brief, Problem Statement, User Stories, Requirements, Acceptance Criteria, Success Metrics, Backlog → `context.md` (Requirements & User Stories section)
+- Research findings, competitor analysis → `research.md`
+- Assumptions, dependencies, risks → `context.md` (Open Questions & Risks section)
+- Update `context.md` (Current Status and Next Actions) before completing work
 
 ---
 
@@ -118,7 +118,7 @@ You are a self-contained, mission-based agent. You own your work from start to f
 
 At mission start, load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
 
-Before working, check `session.md` to understand the current state. After completing work, update `session.md` and write outputs to the appropriate artifact directories.
+Before working, check `context.md` to understand the current state. After completing work, update `context.md` and write outputs to the appropriate shared workspace files.
 
 When you need expertise outside your domain, consult the appropriate agent directly using the `task` tool with `subagent_type` matching the agent name:
 
@@ -129,19 +129,19 @@ When you need expertise outside your domain, consult the appropriate agent direc
 
 Knowledge flagging:
 - During work, if you discover something reusable (a business pattern, domain insight, research finding), flag it as a knowledge candidate.
-- Add `[KNOWLEDGE-CANDIDATE]` prefix to a note in your `research/` or drop a file in `knowledge-candidates/`.
+- Add `[KNOWLEDGE-CANDIDATE]` prefix to a note in `research.md` or drop a file in `knowledge-candidates/`.
 - Explain why it's reusable and where the evidence lives.
 
 Consultation rules:
 - You remain the owner after consulting — the other agent is helping you, not taking over.
 - Provide full context: what you know, what you need, and why.
-- Document what you learn in workspace `research/` or `artifacts/`.
+- Document what you learn in `research.md` or `context.md`.
 - Never perform work outside your domain — consult instead.
 
 ## Edit Scope
 
 Approved to edit:
-- `.coao/docs/<mission-slug>/product-owner/` — all artifact files
+- `.coao/docs/<mission-slug>/` — shared workspace files
 - `.opencode/agents/` — agent definitions if requirements change
 - `.opencode/rules/` — organizational rules if process gaps found
 

@@ -32,91 +32,67 @@ Everything related to the mission must remain inside this workspace until the mi
 
 .coao/docs/<mission-slug>/
 
-├── session.md              — Mission state (shared)
-├── handoffs/               — Inter-agent communication (shared)
+├── context.md              — Single living document (all roles contribute)
+├── decisions.md            — Decision log (shared)
+├── research.md             — Investigation notes (shared)
 ├── attachments/            — Supporting files (shared)
-├── knowledge-candidates/   — Findings flagged for potential promotion (shared)
-├── product-owner/
-│   ├── artifacts/
-│   ├── research/
-│   └── decisions/
-├── solution-architect/
-│   ├── artifacts/
-│   ├── research/
-│   ├── decisions/
-│   └── implementation/
-├── software-engineer/
-│   ├── artifacts/
-│   ├── research/
-│   ├── decisions/
-│   └── implementation/
-└── qa-engineer/
-    ├── artifacts/
-    ├── research/
-    ├── decisions/
-    └── validation/
+└── knowledge-candidates/   — Findings flagged for potential promotion (shared)
 
-Each agent owns files within its role directory.
+All agents contribute to the same shared files. No role-specific directories.
 
 ---
 
-# session.md
+# context.md
 
 Purpose
 
-Represents the current state of the mission.
+Represents the mission's complete state — substance, status, progress, and next actions.
 
-Updated continuously throughout execution.
+Updated continuously throughout execution by every agent.
 
-Contains
+Sections
 
-- Mission summary
-- Current owner
-- Current phase
-- Progress
-- Current objective
-- Open questions
-- Known risks
-- Blocking issues
-- Next action
+- **Mission Summary** — what is being built and why
+- **Current Status** — who is working, current phase, progress (absorbed from former session.md)
+- **Requirements & User Stories** — what needs to be delivered
+- **Design & Architecture** — how it will be built
+- **Implementation Notes** — progress and decisions during coding
+- **Validation & QA Results** — testing evidence and release confidence
+- **Open Questions & Risks** — unresolved items and known blockers
+- **Next Actions** — what should happen next
 
-Every agent must read this file before beginning work.
+Every agent must read context.md before beginning work and update it before completing work.
 
-Every agent must update this file before completing work.
+Prefer updating existing sections rather than creating new ones.
 
 ---
 
-# artifacts/ (within each role directory)
+# decisions.md
 
 Purpose
 
-Contains mission deliverables for that agent's domain.
+Contains important mission decisions made by any agent.
 
-Artifacts describe WHAT is being built.
+Every decision should record:
 
-Examples
+- Context
+- Problem Statement
+- Constraints
+- Alternatives Considered
+- Decision
+- Reasoning
+- Trade-offs
+- Expected Consequences
 
-- Product Specification
-- User Stories
-- Acceptance Criteria
-- Solution Design
-- API Contract
-- Architecture Diagram
-- Release Notes
-
-Artifacts should evolve throughout the mission.
-
-Prefer updating existing artifacts rather than creating duplicates.
-
-Artifacts become the communication contract between agents.
+Mission decisions remain in this file unless promoted into organizational ADRs in `knowledge/decisions/`.
 
 ---
 
-# research/ (within each role directory)
+# research.md
 
 Purpose
 
-Contains supporting investigation for that agent's domain.
+Contains supporting investigation by any agent.
 
 Research explains WHY decisions were made.
 
@@ -133,89 +109,6 @@ Examples
 Research supports decisions.
 
 Research is never considered organizational knowledge until promoted.
-
----
-
-# implementation/ (within solution-architect and software-engineer)
-
-Purpose
-
-Contains implementation planning and execution information.
-
-Implementation explains HOW work is completed.
-
-Examples
-
-- Implementation Plan
-- Task Breakdown
-- Migration Strategy
-- Technical Notes
-- Integration Notes
-- Refactoring Plan
-- Deployment Plan
-
-Implementation does not contain source code.
-
-Source code belongs in the repository.
-
----
-
-# validation/ (within qa-engineer)
-
-Purpose
-
-Contains evidence that work satisfies requirements.
-
-Examples
-
-- QA Report
-- Test Summary
-- Validation Checklist
-- Performance Results
-- Security Review
-- Accessibility Review
-- Known Issues
-
-Validation should demonstrate confidence, not merely completion.
-
----
-
-# decisions/ (within each role directory)
-
-Purpose
-
-Contains important decisions made by that agent.
-
-Each decision should record
-
-- Context
-- Alternatives
-- Decision
-- Reasoning
-- Trade-offs
-- Consequences
-
-Mission decisions remain within the role directory unless promoted into organizational ADRs.
-
----
-
-# handoffs/ (mission-level shared)
-
-Purpose
-
-Support ownership transfer.
-
-Every handoff should include
-
-- Current Status
-- Completed Work
-- Remaining Work
-- Updated Artifacts
-- Risks
-- Assumptions
-- Recommended Next Action
-
-Another agent should continue work without rediscovery.
 
 ---
 
@@ -238,39 +131,39 @@ Large supporting files belong here.
 
 ---
 
+# knowledge-candidates/
+
+Purpose
+
+Findings flagged for potential promotion into organizational `knowledge/`.
+
+Prefix entries with `[KNOWLEDGE-CANDIDATE]` or `[KNOWLEDGE-STALE]` and explain reusability.
+
+Reviewed and curated at mission completion.
+
+---
+
 # Information Placement Rules
 
-Mission status
+Mission status, progress, substance
 
-→ session.md
+→ context.md (relevant section)
 
-Mission deliverables
+Decision records
 
-→ artifacts/ (within your role directory)
+→ decisions.md
 
 Supporting investigation
 
-→ research/ (within your role directory)
-
-Implementation planning
-
-→ implementation/ (within solution-architect or software-engineer)
-
-Validation evidence
-
-→ validation/ (within qa-engineer)
-
-Mission decisions
-
-→ decisions/ (within your role directory)
-
-Ownership transitions
-
-→ handoffs/
+→ research.md
 
 Supporting files
 
 → attachments/
+
+Knowledge candidates
+
+→ knowledge-candidates/
 
 Source code
 
@@ -288,7 +181,7 @@ Organization standards
 
 → knowledge/standards/
 
-Architecture decisions
+Architecture decisions (promoted)
 
 → knowledge/decisions/
 
@@ -310,10 +203,9 @@ Before creating new files:
 
 Before finishing work:
 
-- Update session.md.
-- Update affected artifacts.
-- Record decisions.
-- Leave a handoff if another agent is expected.
+- Update context.md.
+- Record decisions in decisions.md.
+- Leave a handoff note in context.md (Next Actions section) if another agent is expected.
 
 ---
 
@@ -331,11 +223,11 @@ Workspace Initialized (`.coao/docs/<mission-slug>/`)
 
 ↓
 
-Artifacts Created
+context.md Created
 
 ↓
 
-Artifacts Updated
+context.md Updated (continuously by all agents)
 
 ↓
 

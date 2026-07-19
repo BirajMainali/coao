@@ -80,9 +80,8 @@ Resolve inconsistencies before continuing.
 
 Read:
 
-- session.md
+- context.md
 - workspace artifacts
-- handoffs
 - outstanding work
 
 Determine:
@@ -99,7 +98,7 @@ Resume from existing state.
 
 During work:
 
-- Update session.md.
+- Update context.md.
 - Update owned artifacts.
 - Keep workspace synchronized with progress.
 - Avoid duplicate files.

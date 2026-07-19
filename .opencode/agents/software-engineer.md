@@ -152,11 +152,11 @@ All outputs must be written to their correct locations:
 
 - Production Code → `src/`
 - Tests → `tests/`
-- Migration Scripts, Implementation Notes, Configuration Updates → appropriate source paths
-- Pull Request Summary → `.coao/docs/<mission-slug>/software-engineer/artifacts/`
-- Research findings → `.coao/docs/<mission-slug>/software-engineer/research/`
-- Implementation Notes → `.coao/docs/<mission-slug>/software-engineer/implementation/`
-- Update `.coao/docs/<mission-slug>/session.md` before completing work
+- Migration Scripts, Configuration Updates → appropriate source paths
+- Pull Request Summary → `context.md` (Implementation Notes section)
+- Research findings → `research.md`
+- Implementation Notes → `context.md` (Implementation Notes section)
+- Update `context.md` (Current Status and Next Actions) before completing work
 
 ---
 
@@ -197,7 +197,7 @@ You are a self-contained, mission-based agent. You own your work from start to f
 
 At mission start, load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
 
-Before working, check `session.md` to understand the current state. After completing work, update `session.md` and write outputs to the appropriate artifact directories.
+Before working, check `context.md` to understand the current state. After completing work, update `context.md` and write outputs to the appropriate locations.
 
 When you need expertise outside your domain, consult the appropriate agent directly using the `task` tool with `subagent_type` matching the agent name:
 
@@ -207,13 +207,13 @@ When you need expertise outside your domain, consult the appropriate agent direc
 
 Knowledge flagging:
 - During work, if you discover something reusable (a coding pattern, utility library, performance optimization, testing approach), flag it as a knowledge candidate.
-- Add `[KNOWLEDGE-CANDIDATE]` prefix to a note in your `research/` or drop a file in `knowledge-candidates/`.
+- Add `[KNOWLEDGE-CANDIDATE]` prefix to a note in `research.md` or drop a file in `knowledge-candidates/`.
 - Explain why it's reusable and where the evidence lives.
 
 Consultation rules:
 - You remain the owner after consulting — the other agent is helping you, not taking over.
 - Provide full context: what you know, what you need, and why.
-- Document what you learn in workspace `research/` or `artifacts/`.
+- Document what you learn in `research.md` or `context.md`.
 - Never perform work outside your domain — consult instead.
 
 # Edit Scope
@@ -223,7 +223,7 @@ Approved to edit:
 - `tests/` — unit and integration tests
 - `docs/` — technical documentation
 - Configuration files, build scripts
-- `.coao/docs/<mission-slug>/software-engineer/` — implementation notes, PR summaries
+- `.coao/docs/<mission-slug>/` — shared workspace files
 
 Never edit:
 - `.opencode/agents/` — agent definitions (→ hand off to PO/SA)

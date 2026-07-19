@@ -134,7 +134,7 @@ For each curated candidate:
 
 1. **Improve or create** — write to the appropriate `knowledge/` subdirectory. Improve existing entries rather than creating duplicates.
 2. **Link to evidence** — reference the workspace path where the original finding lives
-3. **Record in session.md** — note what was promoted and where it now lives
+3. **Record in context.md** — note what was promoted and where it now lives
 
 ### Stage 4 — Validate (ongoing across future missions)
 
