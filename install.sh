@@ -11,7 +11,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${GREEN}  COAO — Collaborative Agent Operating Org${NC}"
+echo -e "${GREEN}  COAO - Collaborative Agent Operating Org${NC}"
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 
@@ -56,8 +56,8 @@ fi
 echo ""
 echo "Where do you want to install COAO?"
 echo ""
-echo "  1) Project-wide  — .opencode/ in current directory (default)"
-echo "  2) Global        — ~/.config/opencode/"
+echo "  1) Project-wide  - .opencode/ in current directory (default)"
+echo "  2) Global        - ~/.config/opencode/"
 echo ""
 
 read -rp "Select [1/2]: " choice

@@ -1,4 +1,4 @@
-# COAO — Collaborative Agent Operating Organization
+# COAO - Collaborative Agent Operating Organization
 
 A structured multi-agent engineering environment for [OpenCode](https://opencode.ai). COAO defines specialized agent roles, codified organizational policies, and a knowledge governance system that separates working memory from reusable knowledge.
 
@@ -29,11 +29,11 @@ A structured multi-agent engineering environment for [OpenCode](https://opencode
 
 COAO organizes AI agents into a structured engineering organization with specialized roles, codified rules, and workspace-based work items. It provides:
 
-- **Role separation** — five agent types with distinct responsibilities and constraints
-- **Organizational policies** — codified rules for behavior, governance, and operations
-- **Knowledge governance** — a staged pipeline separating transient memory from permanent knowledge
-- **Workspace isolation** — per-mission directories preventing context leakage
-- **Tool discipline** — guidelines for selecting between built-in tools, MCP servers, and skills
+- **Role separation** - five agent types with distinct responsibilities and constraints
+- **Organizational policies** - codified rules for behavior, governance, and operations
+- **Knowledge governance** - a staged pipeline separating transient memory from permanent knowledge
+- **Workspace isolation** - per-mission directories preventing context leakage
+- **Tool discipline** - guidelines for selecting between built-in tools, MCP servers, and skills
 
 COAO is not a library or framework. It is a configuration layer that runs on OpenCode and is installable into any project.
 
@@ -60,11 +60,11 @@ These are organizational problems, not technical ones. COAO addresses them by im
 
 COAO provides a structured operating model for agent collaboration:
 
-1. **Specialized agent roles** — each with defined ownership, decision frameworks, quality checklists, and constraints
-2. **Codified organizational policies** — rules organized by domain (behavior, governance, operations) loaded at session start
-3. **Knowledge governance pipeline** — collect, curate, promote, and validate reusable intelligence
-4. **Workspace-based work items** — per-mission isolation with type-specific lifecycles
-5. **Tool selection guidelines** — when to use built-in tools, MCP servers, or skills
+1. **Specialized agent roles** - each with defined ownership, decision frameworks, quality checklists, and constraints
+2. **Codified organizational policies** - rules organized by domain (behavior, governance, operations) loaded at session start
+3. **Knowledge governance pipeline** - collect, curate, promote, and validate reusable intelligence
+4. **Workspace-based work items** - per-mission isolation with type-specific lifecycles
+5. **Tool selection guidelines** - when to use built-in tools, MCP servers, or skills
 
 ---
 
@@ -87,10 +87,10 @@ Memory supports execution. Knowledge supports future decisions.
 
 The knowledge pipeline operates in four stages:
 
-1. **Collect** — during work, agents flag reusable findings with `[KNOWLEDGE-CANDIDATE]` prefix
-2. **Curate** — at work item completion, candidates are evaluated against promotion criteria (reusable, evidence-based, valuable, stable, relevant)
-3. **Promote** — approved findings are written to `knowledge/` with appropriate categorization (decisions, standards, patterns, runbooks, lessons)
-4. **Validate** — future agents reference and verify knowledge; stale entries are updated, deprecated, or archived
+1. **Collect** - during work, agents flag reusable findings with `[KNOWLEDGE-CANDIDATE]` prefix
+2. **Curate** - at work item completion, candidates are evaluated against promotion criteria (reusable, evidence-based, valuable, stable, relevant)
+3. **Promote** - approved findings are written to `knowledge/` with appropriate categorization (decisions, standards, patterns, runbooks, lessons)
+4. **Validate** - future agents reference and verify knowledge; stale entries are updated, deprecated, or archived
 
 ### Work Items
 
@@ -112,9 +112,9 @@ Each work item creates an isolated workspace under `.coao/<type>s/<slug>/` conta
 
 Agents communicate through shared workspace artifacts, not conversation history. The three core artifacts are:
 
-- **`context.md`** — single living document with sections for summary, status, requirements, design, implementation notes, validation results, risks, and next actions
-- **`decisions.md`** — decision log recording context, problem, alternatives, rationale, and trade-offs
-- **`research.md`** — investigation notes with findings, evidence, assumptions, and recommendations
+- **`context.md`** - single living document with sections for summary, status, requirements, design, implementation notes, validation results, risks, and next actions
+- **`decisions.md`** - decision log recording context, problem, alternatives, rationale, and trade-offs
+- **`research.md`** - investigation notes with findings, evidence, assumptions, and recommendations
 
 This approach ensures that any agent can continue work by reading the workspace without needing prior conversation context.
 
@@ -255,8 +255,8 @@ curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/master/install.sh
 
 The install script copies agent definitions, rules, skills, and configuration into your project's `.opencode/` directory. It supports two installation modes:
 
-- **Project-wide** — files are placed in `<project>/.opencode/`
-- **Global** — files are placed in `~/.config/opencode/`
+- **Project-wide** - files are placed in `<project>/.opencode/`
+- **Global** - files are placed in `~/.config/opencode/`
 
 After installation, launch OpenCode in the project directory. The agents, rules, and skills defined by COAO are automatically loaded.
 
