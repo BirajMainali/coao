@@ -11,7 +11,7 @@ This is a multi-agent engineering organization. The project defines rules, agent
 - `.opencode/agents/` - Subagent definitions with YAML front-matter (PO, QA, SE, SA, TR)
 - `.opencode/skills/` - Reusable skill definitions
 - `.opencode/AGENTS.md` - Primary opencode instructions
-- `.opencode/opencode.json` - OpenCode configuration with MCP servers
+- `.opencode/opencode.json` - OpenCode configuration
 
 ## Rules
 
@@ -23,7 +23,7 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 - @.opencode/rules/behavior/decision-making.md - Evidence-based decision process
 - @.opencode/rules/behavior/quality.md - Deliverable quality standards
 - @.opencode/rules/behavior/research.md - Investigation and uncertainty reduction
-- @.opencode/rules/behavior/discipline.md - Tool & technology agnosticism, MCP server, and skill selection
+- @.opencode/rules/behavior/discipline.md - Tool & technology agnosticism and skill selection
 
 ### Governance
 
@@ -54,14 +54,6 @@ Rules are loaded on a need-to-know basis. Use your Read tool to load relevant ru
 - `git-branching` - Consistent Git branching conventions: branch from production branches, safe merge workflow, human-style commits.
 - `git-worktree` - Git worktree management for work-item-based development.
 - `grilling` - Grills you relentlessly about a plan or design, one question at a time.
-
-## MCP Servers
-
-The following MCP servers are configured and provide additional tools:
-
-- `serena` - Symbolic code retrieval, editing, and refactoring (language-server-backed IDE for agents). Use when you need cross-file refactoring, symbol navigation, or deep code understanding.
-- `chrome-devtools` - Browser automation and performance analysis via Chrome DevTools. Use for web testing, debugging, performance audits, and screenshots.
-- `fixture-mcp` - Stateful API testing with persistent sessions, context store, event audit logs, and multi-step workflows. Use for API testing with session persistence.
 
 ## Key Conventions
 

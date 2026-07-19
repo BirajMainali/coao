@@ -47,8 +47,6 @@ You have `bash: none`. You cannot execute commands. Do not try.
 | `Read` (except research.md) | Accesses project files (context = X) |
 | `Glob`, `Grep` | Searches project files (context = X) |
 | `bash` | Execution forbidden |
-| `serena` | Code understanding = context = X |
-| `list_mcp_resources`, `read_mcp_resource` | May expose project info |
 
 ---
 

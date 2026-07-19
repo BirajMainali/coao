@@ -33,7 +33,7 @@ COAO organizes AI agents into a structured engineering organization with special
 - **Organizational policies** - codified rules for behavior, governance, and operations
 - **Knowledge governance** - a staged pipeline separating transient memory from permanent knowledge
 - **Workspace isolation** - per-mission directories preventing context leakage
-- **Tool discipline** - guidelines for selecting between built-in tools, MCP servers, and skills
+- **Tool discipline** - guidelines for selecting between built-in tools and skills
 
 COAO is not a library or framework. It is a configuration layer that runs on OpenCode and is installable into any project.
 
@@ -64,7 +64,7 @@ COAO provides a structured operating model for agent collaboration:
 2. **Codified organizational policies** - rules organized by domain (behavior, governance, operations) loaded at session start
 3. **Knowledge governance pipeline** - collect, curate, promote, and validate reusable intelligence
 4. **Workspace-based work items** - per-mission isolation with type-specific lifecycles
-5. **Tool selection guidelines** - when to use built-in tools, MCP servers, or skills
+5. **Tool selection guidelines** - when to use built-in tools or skills
 
 ---
 
@@ -165,15 +165,7 @@ Ten codified policies organized into three domains, loaded on a need-to-know bas
 
 ### Tool Layer
 
-Three MCP servers and three skills extend agent capabilities:
-
-**MCP Servers:**
-
-| Server | Capability |
-|--------|------------|
-| **Serena** | Language-server-backed code retrieval, editing, and refactoring |
-| **Chrome DevTools** | Browser automation, web testing, debugging, performance auditing |
-| **fixture-mcp** | Stateful API testing with session persistence and event audit logs |
+Three skills extend agent capabilities:
 
 **Skills:**
 
@@ -183,7 +175,7 @@ Three MCP servers and three skills extend agent capabilities:
 | **git-worktree** | Isolated branch-based development with Git worktrees |
 | **grilling** | Interactive design and plan review |
 
-Tool discipline policy provides selection guidelines: prefer built-in tools for standard operations, MCP servers for specialized capabilities, and skills for guided workflows.
+Tool discipline policy provides selection guidelines: prefer built-in tools for standard operations and skills for guided workflows.
 
 ---
 
@@ -193,7 +185,7 @@ Tool discipline policy provides selection guidelines: prefer built-in tools for 
 .
 ├── .opencode/                    # COAO configuration
 │   ├── AGENTS.md                 # Primary OpenCode instructions
-│   ├── opencode.json             # OpenCode configuration with MCP servers
+│   ├── opencode.json             # OpenCode configuration
 │   ├── agents/                   # Agent definitions
 │   │   ├── product-owner.md
 │   │   ├── solution-architect.md
@@ -244,8 +236,6 @@ Key structural notes:
 ### Prerequisites
 
 - [OpenCode](https://opencode.ai) installed
-- `fixture-mcp` (optional, for API testing): `npm install -g fixture-mcp`
-- `serena-agent` (optional, for code intelligence): `uv tool install -p 3.13 serena-agent && serena init`
 
 ### Install
 
@@ -266,7 +256,7 @@ Installing COAO adds to your project:
 
 - 5 agent definitions
 - 14 codified policies across 3 domains
-- 3 MCP server configurations (Serena, Chrome DevTools, fixture-mcp)
+
 - 3 skill definitions
 - Workspace initialization templates
 - Knowledge governance pipeline configuration
@@ -283,7 +273,7 @@ Installing COAO adds to your project:
 | Work item types | 7 types with distinct lifecycles and agent maps | No formal classification |
 | Workspace isolation | Per-mission directories with shared artifacts | No isolation |
 | Artifact-driven communication | context.md, decisions.md, research.md | Conversation history |
-| Tool selection guide | Policy-based (built-in > MCP > skill) | No guidance |
+| Tool selection guide | Policy-based (built-in > skill) | No guidance |
 | Session recovery | Read workspace, restore context | Start from scratch |
 | Knowledge persistence | Staged pipeline (collect → curate → promote → validate) | Not addressed |
 

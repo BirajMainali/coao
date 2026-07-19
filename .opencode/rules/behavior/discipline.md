@@ -32,14 +32,6 @@ Launch MCP or load a skill only when the task genuinely needs it.
 
 ## When to Use What
 
-### MCP Servers
-
-| Server | Use when | Don't use when |
-|--------|----------|----------------|
-| serena | Cross-file refactoring, symbol navigation, deep code understanding | A simple grep or glob suffices, or change is single-file |
-| chrome-devtools | Web testing, browser automation, debugging, performance audits, screenshots | No browser interaction needed, purely server-side |
-| fixture-mcp | Stateful API testing, multi-step API workflows, session persistence | A simple curl or bash test suffices |
-
 ### Skills
 
 | Skill | Use when | Don't use when |
