@@ -9,7 +9,7 @@ description: Create, resume, validate, and maintain Git worktrees for work-item-
 
 Provide a consistent workflow for managing Git worktrees throughout a work item.
 
-This skill standardizes how development workspaces are created, resumed, and maintained.
+This skill standardizes how development workspaces are created, resumed, reused, and cleaned up.
 
 ---
 
@@ -25,129 +25,160 @@ Use this skill when:
 
 ---
 
+## Worktree Basics
+
+A worktree is a separate checkout in its own directory. Work on multiple branches simultaneously without stashing or cloning again. Worktrees share `.git` objects, refs, and config — no duplication.
+
+---
+
 # Workflow
 
 ## 1. Discover
 
-Determine whether an appropriate worktree already exists.
+```bash
+git worktree list
+```
 
-If one exists:
-
-- Resume it.
-- Do not create another.
-
-If one does not exist:
-
-- Continue to initialization.
+Shows every worktree path, branch, and commit. If one exists for this item, resume it — do not create another.
 
 ---
 
-## 2. Initialize
+## 2. Create
 
-Create a dedicated worktree.
+All worktrees go in a **sibling directory** of the main repo (never inside it).
 
-The worktree should contain:
+```bash
+git worktree add ../<name> <base-branch>
+```
 
-- Feature branch
-- Repository checkout
-- Work item workspace
-- Session tracking
+### Examples
 
-Initialize the workspace.
+```bash
+# New branch from master
+git worktree add ../feat-user-auth master
 
-Example
-workspace/
-    active/
-        <work-item-slug>/
+# Existing local branch
+git worktree add ../fix-login-error fix/login-error
+
+# Remote tracking branch
+git worktree add ../feat-user-auth origin/feat/user-auth
+```
+
+Create the work item workspace:
+
+```bash
+mkdir -p ../<name>/.coao/<type>s/<slug>
+```
 
 ---
 
 ## 3. Validate
 
-Before beginning work verify:
+```bash
+cd ../<name>
+git status          # correct branch? clean?
+git log --oneline -3
+```
 
-- Correct worktree
-- Correct branch
-- Workspace exists
-- Session exists
-- Repository is in expected state
+### Common Fixes
 
-Resolve inconsistencies before continuing.
+| Problem | Fix |
+|---------|-----|
+| Detached HEAD | `git checkout <branch>` then `git pull` |
+| Stale metadata | `git worktree prune` |
+| Branch missing locally | `git fetch origin` then retry |
 
 ---
 
 ## 4. Resume
 
-Read:
+```bash
+cd ../<name>
+git pull
+```
 
-- context.md
-- workspace artifacts
-- outstanding work
-
-Determine:
-
-- Current objective
-- Current owner
-- Next action
-
-Resume from existing state.
+Read `context.md` and workspace artifacts. Determine objective, owner, next action. Continue.
 
 ---
 
-## 5. Maintain
+## 5. Reuse — Switch to a Different Branch
 
-During work:
+```bash
+cd ../<name>
+git fetch origin
+git checkout -b <new-branch> <base-branch>
+```
 
-- Update context.md.
-- Update owned artifacts.
-- Keep workspace synchronized with progress.
-- Avoid duplicate files.
+Or to an existing branch:
 
-Workspace is the operational source of truth.
+```bash
+cd ../<name>
+git checkout <existing-branch> && git pull
+```
 
----
+Delete the old branch if no longer needed:
 
-## 6. Complete
-
-Before leaving the workspace:
-
-- Update work item state.
-- Record remaining work.
-- Record assumptions.
-- Record risks.
-- Leave structured handoff.
+```bash
+git branch -d <old-branch>
+```
 
 ---
 
-## 7. Archive
+## 6. Maintain
 
-When the work item is complete:
+During work: update `context.md`, update artifacts, commit regularly.
 
-- Review artifacts.
-- Promote knowledge (per type rules in work-items.md).
-- Archive workspace.
-- Remove worktree only when explicitly instructed.
+```bash
+git add -A && git commit -m "human-style message" && git push -u origin <branch>
+```
+
+---
+
+## 7. Cleanup
+
+After the branch is merged or the work item is complete:
+
+```bash
+git worktree remove ../<name>
+git worktree prune
+rm -rf ../<name>           # if directory still exists
+```
+
+### When to Clean
+
+| Situation | Action |
+|-----------|--------|
+| Branch merged, PR closed | Remove worktree |
+| Work item abandoned | Remove worktree + delete branch |
+| Switching items | Leave current; create/resume another |
+| Stale worktrees piling up | `git worktree prune` |
+
+Prevent accidental cleanup of active worktrees:
+
+```bash
+git worktree lock ../<name>
+git worktree unlock ../<name>
+```
 
 ---
 
 ## Directory Convention
 
-Work item workspaces live at `.coao/<type>s/<slug>/` where `<type>` is one of:
+Workspace at `.coao/<type>s/<slug>/` where `<type>` is one of:
 
-- `projects`
-- `features`
-- `fixes`
-- `tasks`
-- `spikes`
-- `chores`
-- `releases`
+`projects`, `features`, `fixes`, `tasks`, `spikes`, `chores`, `releases`
+
+---
+
+## Anti-patterns
+
+- Creating a worktree inside the main repo directory.
+- Removing a worktree directory without `git worktree prune` after.
+- Leaving stale worktrees indefinitely.
+- Working in the main checkout when a dedicated worktree exists.
 
 ---
 
 ## Success
 
-Every work item should have exactly one active worktree.
-
-Every worktree should contain a complete and resumable workspace.
-
-A contributor should be able to continue work without relying on previous conversations.
+Every work item has exactly one active worktree. Every worktree is resumable by reading its artifacts. No stale worktrees accumulate.
