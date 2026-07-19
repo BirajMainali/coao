@@ -56,11 +56,12 @@ fi
 echo ""
 echo "Where do you want to install COAO?"
 echo ""
-echo "  1) Project-wide  — .opencode/ in current directory"
+echo "  1) Project-wide  — .opencode/ in current directory (default)"
 echo "  2) Global        — ~/.config/opencode/"
 echo ""
 
 read -rp "Select [1/2]: " choice
+choice="${choice:-1}"
 
 case "$choice" in
   2)
@@ -96,7 +97,7 @@ case "$choice" in
     echo "    └── rules/"
     ;;
 
-  1)
+  1|*)
     TARGET=".opencode"
 
     echo ""
@@ -134,11 +135,6 @@ case "$choice" in
     echo ""
     echo "  AGENTS.md      -> .opencode/AGENTS.md"
     echo "  opencode.json  -> .opencode/opencode.json"
-    ;;
-
-  *)
-    echo -e "${RED}Invalid selection.${NC}"
-    exit 1
     ;;
 esac
 
