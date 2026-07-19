@@ -35,6 +35,7 @@ Everything related to the mission must remain inside this workspace until the mi
 ├── session.md              — Mission state (shared)
 ├── handoffs/               — Inter-agent communication (shared)
 ├── attachments/            — Supporting files (shared)
+├── knowledge-candidates/   — Findings flagged for potential promotion (shared)
 ├── product-owner/
 │   ├── artifacts/
 │   ├── research/

@@ -127,6 +127,11 @@ When you need expertise outside your domain, consult the appropriate agent direc
 - **Need quality validation or testing?** → Consult QA Engineer
 - **Need business input you can't resolve independently?** → Research first, then escalate
 
+Knowledge flagging:
+- During work, if you discover something reusable (a business pattern, domain insight, research finding), flag it as a knowledge candidate.
+- Add `[KNOWLEDGE-CANDIDATE]` prefix to a note in your `research/` or drop a file in `knowledge-candidates/`.
+- Explain why it's reusable and where the evidence lives.
+
 Consultation rules:
 - You remain the owner after consulting — the other agent is helping you, not taking over.
 - Provide full context: what you know, what you need, and why.

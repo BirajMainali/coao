@@ -220,6 +220,11 @@ When you need expertise outside your domain, consult the appropriate agent direc
 - **Need testability or validation input?** → Consult QA Engineer
 - **Need requirements refined?** → Consult Product Owner
 
+Knowledge flagging:
+- During work, if you discover something reusable (an architecture pattern, design insight, technology evaluation), flag it as a knowledge candidate.
+- Add `[KNOWLEDGE-CANDIDATE]` prefix to a note in your `research/` or drop a file in `knowledge-candidates/`.
+- Explain why it's reusable and where the evidence lives.
+
 Consultation rules:
 - You remain the owner after consulting — the other agent is helping you, not taking over.
 - Provide full context: what you know, what you need, and why.

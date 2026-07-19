@@ -69,38 +69,57 @@ knowledge/
 
 ---
 
-## Promotion
+## Promotion Pipeline
 
-Not all memory becomes knowledge.
+Not all memory becomes knowledge. Promotion follows a staged pipeline:
 
-Promotion happens at mission completion during the Knowledge Review phase.
+```
+Collect (during mission) → Curate (knowledge review) → Promote (write to knowledge/) → Validate (future missions)
+```
 
-### Who promotes
+---
 
-The last active agent or the agent completing the mission reviews workspace artifacts and decides what to promote.
+### Stage 1 — Collect (continuous, during mission)
 
-### When to promote
+Every agent continuously watches for reusable findings during their work.
 
-During the Knowledge Review phase of the workspace lifecycle (after Mission Complete, before Workspace Archived).
+When an agent discovers something potentially reusable:
+1. Write a brief note in their role's `research/` with the prefix `[KNOWLEDGE-CANDIDATE]`
+2. Or drop a file in the mission-level `knowledge-candidates/` directory
+3. Include: what was found, why it's reusable, and where the evidence lives
 
-### Promotion criteria
+Agents should also check existing knowledge during research — if they find outdated or incorrect knowledge, flag it in `knowledge-candidates/` with prefix `[KNOWLEDGE-STALE]`.
 
-Information should be promoted only when it is:
+### Stage 2 — Curate (at mission completion)
 
-- Reusable across multiple missions
-- Evidence-based (backed by real results)
-- Valuable beyond the current mission
-- Stable (unlikely to change frequently)
-- Relevant to future decision-making
+During the Knowledge Review phase (after Mission Complete, before Workspace Archived), the last active agent:
 
-### Promotion process
+1. **Collect candidates** — read `knowledge-candidates/` and grep for `[KNOWLEDGE-CANDIDATE]` in all role `research/` and `artifacts/`
+2. **Evaluate against criteria** — each candidate must be:
+   - Reusable across multiple missions
+   - Evidence-based (backed by real results)
+   - Valuable beyond the current mission
+   - Stable (unlikely to change frequently)
+   - Relevant to future decision-making
+3. **Deduplicate** — search `knowledge/` for duplicates or related entries
+4. **Categorize** — decide which `knowledge/` subdirectory it belongs in (decisions/, standards/, patterns/, runbooks/, lessons/)
 
-1. **Review workspace artifacts** — read `research/`, `decisions/`, `artifacts/`, `validation/`
-2. **Identify promotable items** — match against promotion criteria
-3. **Check existing knowledge** — search `knowledge/` for duplicates or related entries
-4. **Improve or create** — update existing knowledge or create new files in the appropriate `knowledge/` subdirectory
-5. **Link to evidence** — reference the workspace path where the original finding lives
-6. **Update session.md** — record what was promoted and where it now lives
+### Stage 3 — Promote (at mission completion)
+
+For each curated candidate:
+
+1. **Improve or create** — write to the appropriate `knowledge/` subdirectory. Improve existing entries rather than creating duplicates.
+2. **Link to evidence** — reference the workspace path where the original finding lives
+3. **Record in session.md** — note what was promoted and where it now lives
+
+### Stage 4 — Validate (ongoing across future missions)
+
+Knowledge is only proven when it survives real use:
+
+1. **Future agents reference `knowledge/`** before starting work in a domain
+2. **If knowledge is inaccurate or outdated**, the agent flags it with `[KNOWLEDGE-STALE]` in the current mission's `knowledge-candidates/`
+3. **Stale knowledge is reviewed** during the next curation cycle — either updated, deprecated, or retired
+4. **Promoted knowledge that is never referenced** after 3 missions may be archived
 
 ### What stays as memory
 
