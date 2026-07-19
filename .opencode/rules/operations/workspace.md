@@ -328,7 +328,7 @@ Mission Complete
 
 ↓
 
-Knowledge Review
+Knowledge Review (see `.opencode/rules/governance/knowledge.md` — review workspace artifacts, promote reusable findings to `knowledge/`, leave session-specific memory archived)
 
 ↓
 

@@ -33,6 +33,27 @@ Routine implementation choices do not require formal decision records.
 
 ---
 
+## Decision Locations
+
+### Mission Decisions (temporary)
+
+Written to `.coao/workspace/active/<mission-slug>/decisions/`.
+
+These support the current mission. They are archived with the workspace and are not expected to be read again unless the mission resumes.
+
+### Architecture Decision Records — ADRs (organizational)
+
+Promoted to `knowledge/decisions/` at the repository root.
+
+These persist across missions and serve as organizational knowledge. Promote a mission decision to an ADR when it:
+
+- Changes long-term architecture or system design
+- Introduces new technology or dependency
+- Has significant cost, security, or operational impact
+- Is likely to be referenced by future missions
+
+---
+
 ## Decision Record
 
 Each decision should include:
