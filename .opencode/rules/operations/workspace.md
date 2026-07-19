@@ -107,7 +107,7 @@ Reviewed and curated at work item completion (per type rules).
 
 # Working Agreement
 
-Agents should never communicate by relying on conversation history.
+Agents should prefer communicating through shared artifacts. Conversation history is session-local and lost on handoff.
 
 Agents communicate by updating shared workspace artifacts.
 

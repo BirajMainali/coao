@@ -2,12 +2,18 @@
 
 This is a multi-agent engineering organization. The project defines rules, agents, and skills for structured agent collaboration.
 
+## Entry Point
+
+Every new task starts here: @.opencode/rules/operations/initiation.md
+
+Follow the initiation sequence (classify → validate → plan → workspace → confirm) before doing anything else. This auto-routes the task to the correct agents, skills, and workflow. Before planning, always search `knowledge/` for relevant existing patterns, decisions, or standards. The sequence scales with the work item — task and chore skip the workspace and confirmation steps.
+
 ## Project Structure
 
 - `.opencode/rules/` - Organizational policies organized by domain
   - `behavior/` - Communication, decision-making, quality, research
   - `governance/` - Decisions, knowledge, standards
-  - `operations/` - Workspace, collaboration, session, handoff, artifacts
+  - `operations/` - Workspace, collaboration, session, handoff, artifacts, initiation
 - `.opencode/agents/` - Subagent definitions with YAML front-matter (PO, QA, SE, SA, TR)
 - `.opencode/skills/` - Reusable skill definitions
 - `.opencode/AGENTS.md` - Primary opencode instructions
@@ -15,30 +21,11 @@ This is a multi-agent engineering organization. The project defines rules, agent
 
 ## Rules
 
-Rules are loaded on a need-to-know basis. Use your Read tool to load relevant rules when the task requires them.
+Rules are loaded automatically by domain. Available domains:
 
-### Behavior
-
-- @.opencode/rules/behavior/communication.md - Agent communication and collaboration principles
-- @.opencode/rules/behavior/decision-making.md - Evidence-based decision process
-- @.opencode/rules/behavior/quality.md - Deliverable quality standards
-- @.opencode/rules/behavior/research.md - Investigation and uncertainty reduction
-- @.opencode/rules/behavior/discipline.md - Tool & technology agnosticism and skill selection
-
-### Governance
-
-- @.opencode/rules/governance/decisions.md - Decision recording and lifecycle
-- @.opencode/rules/governance/knowledge.md - Knowledge vs memory, promotion criteria
-- @.opencode/rules/governance/standards.md - Standards lifecycle and compliance
-
-### Operations
-
-- @.opencode/rules/operations/work-items.md - Work item types, lifecycles, and agent involvement
-- @.opencode/rules/operations/workspace.md - Workspace layout and lifecycle
-- @.opencode/rules/operations/collaboration.md - Multi-agent collaboration model
-- @.opencode/rules/operations/session.md - Session continuity and recovery
-- @.opencode/rules/operations/handoff.md - Ownership transfer protocol
-- @.opencode/rules/operations/artifacts.md - Artifact-driven communication
+- **behavior/** — Communication, decision-making, quality, research, discipline
+- **governance/** — Decisions, knowledge, standards
+- **operations/** — Initiation, work-items, workspace, collaboration, session, handoff, artifacts
 
 ## Agents
 

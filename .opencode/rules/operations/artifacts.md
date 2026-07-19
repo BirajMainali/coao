@@ -4,9 +4,7 @@
 
 Artifacts are the organization's source of truth.
 
-Conversations are temporary.
-
-Artifacts preserve decisions, progress, and outcomes across sessions, agents, and humans.
+Conversations support collaboration within a session. Artifacts preserve decisions, progress, and outcomes across sessions, agents, and humans.
 
 ---
 
@@ -63,9 +61,9 @@ Agents may review and suggest improvements to any section but should not overwri
 
 ## Communication
 
-Agents communicate through artifacts.
+Agents should prefer communicating through artifacts.
 
-Do not rely on conversational memory.
+Conversation is acceptable for ephemeral clarifications within a session.
 
 Reference artifacts instead of repeating information.
 

@@ -8,7 +8,7 @@ Agents collaborate through shared artifacts rather than conversational history.
 
 ---
 
-## Collaboration Principles
+## Principles
 
 - Read before asking.
 - Update before creating.
@@ -16,48 +16,6 @@ Agents collaborate through shared artifacts rather than conversational history.
 - Respect ownership boundaries.
 - Preserve context for future contributors.
 - Escalate uncertainty rather than guessing.
-
----
-
-## Before Requesting Another Agent
-
-An agent should first:
-
-- Complete its own responsibility.
-- Search the workspace.
-- Search organizational knowledge.
-- Record assumptions.
-- Document remaining uncertainty.
-
-Only involve another agent when additional expertise or ownership is required.
-
----
-
-## Request Contract
-
-Every request to another agent should include:
-
-- Work item (slug and type)
-- Objective
-- Current state
-- Relevant artifacts
-- Specific question
-- Expected outcome
-
-Avoid open-ended requests.
-
----
-
-## Response Contract
-
-Every response should include:
-
-- Summary
-- Recommendation
-- Reasoning
-- Risks
-- Updated artifacts
-- Next action
 
 ---
 
@@ -71,34 +29,10 @@ Agents should not modify another agent's primary deliverables unless explicitly 
 
 ---
 
-## Handoff
-
-When transferring ownership:
-
-- Update workspace artifacts.
-- Record completed work.
-- Record remaining work.
-- Record assumptions.
-- Record risks.
-- Recommend next owner.
-
-A receiving agent should continue work without rediscovery.
-
----
-
-## Escalation
-
-Escalate when:
-
-- Requirements conflict.
-- Knowledge is insufficient.
-- Multiple valid options exist.
-- Human approval is required.
-
-Never guess to unblock work.
-
----
-
 ## Success
 
 A new agent should understand the work item by reading the workspace without relying on previous conversations.
+
+---
+
+**Mechanics** — request/response formats, consultation model, handoff, and escalation procedures are defined in @.opencode/rules/operations/collaboration.md.

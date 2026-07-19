@@ -94,7 +94,7 @@ A work item is complete when:
 
 1. Its type-specific definition of done is met.
 2. Workspace artifacts are final (context.md, decisions.md if applicable).
-3. Knowledge candidates are promoted (if applicable per type).
+3. Knowledge candidates are promoted or a Knowledge Outcome is documented in context.md (see @.opencode/rules/governance/knowledge.md).
 4. The associated branch is merged.
 5. The workspace is archived.
 

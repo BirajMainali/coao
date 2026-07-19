@@ -157,6 +157,19 @@ Memory is archived with the workspace. It is never deleted but is not expected t
 
 ---
 
+## Knowledge Outcome Gate
+
+Every work item that requires `knowledge-candidates` (see work items by type in @.opencode/rules/operations/work-items.md) must produce a documented knowledge outcome before the workspace is archived.
+
+The last active agent writes a `Knowledge Outcome` entry in `context.md`:
+
+- `[KNOWLEDGE-PROMOTED] <path>` — reusable finding was promoted to `knowledge/`
+- `[KNOWLEDGE-NONE] <reason>` — nothing met the promotion criteria, with explanation
+
+This is a completion requirement, not optional. Without this gate, promotion defaults to "skip" — work items complete without leaving organizational trace, and the same lessons are learned repeatedly.
+
+---
+
 ## Principles
 
 - Search existing knowledge before creating new knowledge.

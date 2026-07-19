@@ -125,9 +125,20 @@ Each agent owns its domain end-to-end. When an agent encounters work outside its
 ### How to Consult
 
 1. Invoke the appropriate subagent using the `task` tool with `subagent_type` matching the agent name.
-2. Provide full context: what you know, what you need, and why.
+2. Provide full context: what you know, what you need, and why. Include a **context bundle** (see below) so the subagent can continue without rediscovery.
 3. Capture the response and incorporate it into your own work.
 4. Document what was learned in the workspace `research.md` or `context.md`.
+
+### Context Bundle
+
+Every subagent consultation must include a context bundle in the prompt:
+
+- Current `context.md` (or its relevant sections)
+- Current `research.md` (if one exists)
+- Current `decisions.md` (if one exists)
+- The specific question and what is blocking the calling agent
+
+This ensures the subagent can continue work without rediscovering what the calling agent already knows. Without this bundle, the subagent starts from zero — wasting time and risking weaker recommendations.
 
 ### Rules
 
