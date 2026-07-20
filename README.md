@@ -1,181 +1,149 @@
-# COAO - Collaborative Agent Operating Organization
+# COAO — Collaborative Agent Operating Organization
 
-A multi-agent tuning layer for [OpenCode](https://opencode.ai). COAO connects specialized agent roles with shared context and persistent knowledge — guiding agents to collaborate like a real engineering team without forcing them into rigid boxes.
+A configuration layer for [OpenCode](https://opencode.ai) that tunes AI agents to collaborate like a real engineering team — with roles, shared context, and memory that outlives individual sessions.
 
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Problem](#problem)
-- [Solution](#solution)
-- [Core Concepts](#core-concepts)
-  - [Memory vs Knowledge](#memory-vs-knowledge)
-  - [Work Items](#work-items)
-  - [Artifact-Driven Communication](#artifact-driven-communication)
-- [Architecture](#architecture)
-  - [Agent Layer](#agent-layer)
-  - [Policy Layer](#policy-layer)
-- [Installation](#installation)
-- [Comparison](#comparison)
-- [Contributing](#contributing)
+Nothing is enforced. Everything is tuned.
 
 ---
 
-## Overview
+## Philosophy
 
-COAO tunes AI agents to work together naturally. Instead of one agent doing everything, each agent has a clear role — product owner, architect, engineer, QA, researcher — and the framework connects them through shared context and persistent knowledge. It provides:
+Most AI coding setups treat agents as interchangeable workers: drop a task in, get code out. It works for simple things. It breaks down when work requires research, validation, multiple perspectives, or knowledge that carries across sessions.
 
-- **Role-matched agents** - five types, each tuned for what it does best
-- **Guiding policies** - gentle structure for behavior, governance, and operations
-- **Knowledge that sticks** - a pipeline that turns working memory into reusable intelligence
-- **Focused workspaces** - per-task isolation that keeps context clean without overhead
-- **Tool awareness** - guidance on when to use built-in tools vs specialized skills
+COAO takes a different approach. Instead of forcing agents into rigid pipelines, it provides lightweight patterns — roles with clear domains, a shared workspace for context, separation between working memory and permanent knowledge — and lets agents decide how to apply them. The structure exists to reduce friction, not to constrain.
 
-COAO is not a library or framework. It is a configuration layer that runs on OpenCode and is installable into any project.
+The task determines the workflow, not the other way around.
 
 ---
 
-## Problem
-
-Most AI-assisted software development setups share common structural weaknesses:
-
-| Issue | Consequence |
-|-------|------------|
-| Single general-purpose agent | No separation of concerns |
-| No persistent knowledge | Insights vanish after each session |
-| No structured handoffs | Context lost between sessions |
-| No codified standards | Every interaction reinvents the process |
-| Conversation-driven communication | History is the only record |
-| No learning mechanism | Same mistakes recur across sessions |
-
-These are organizational problems, not technical ones. COAO addresses them by connecting the dots — guiding agents to collaborate naturally, make better decisions, and keep what they learn.
-
----
-
-## Solution
-
-COAO connects the right agent capabilities to the right workflow:
-
-1. **Matched agent roles** - each tuned for its domain, with decision frameworks and quality checks that amplify natural strengths
-2. **Guiding policies** - lightweight structure for behavior, governance, and operations loaded at session start
-3. **Knowledge that persists** - collect, curate, promote, and validate so insights don't vanish
-4. **Workspace per task** - isolated workspaces with a shared ticket and role-specific work areas
-5. **Tool guidance** - know when to use built-in tools or specialized skills
-
----
-
-## Core Concepts
+## Core Mental Models
 
 ### Memory vs Knowledge
 
-A central distinction in COAO is the separation between **memory** and **knowledge**. These are frequently conflated in other systems; COAO treats them as distinct constructs with different lifecycles and governance rules.
+The most important distinction in COAO.
 
-| | Memory | Knowledge |
-|--|--------|-----------|
-| **Scope** | Work-item-specific | Organization-wide |
-| **Lifetime** | Transient (archived with mission) | Persistent (survives workspaces) |
-| **Location** | `.coao/<type>s/<slug>/` | `knowledge/` at repository root |
-| **Examples** | Progress notes, open questions, working assumptions, handoff documents | Architecture decisions, proven patterns, standards, runbooks, lessons learned |
-| **Governance** | No formal review needed | Staged pipeline: collect → curate → promote → validate |
-| **Promotion** | Never promoted | Curated from memory candidates |
+**Memory** is work-item-specific — progress notes, open questions, working assumptions, handoff documents. It lives in `.coao/<type>s/<slug>/` and is archived when the work item completes. It supports execution.
 
-Memory supports execution. Knowledge supports future decisions.
+**Knowledge** is organizational — architecture decisions, proven patterns, standards, runbooks, lessons learned. It lives in `knowledge/` at the repository root and survives across work items. It supports future decisions.
 
-The knowledge pipeline operates in four stages:
+Memory is never promoted automatically. Knowledge is curated through a pipeline:
 
-1. **Collect** - during work, agents flag reusable findings with `[KNOWLEDGE-CANDIDATE]` prefix
-2. **Curate** - at work item completion, candidates are evaluated against promotion criteria (reusable, evidence-based, valuable, stable, relevant)
-3. **Promote** - approved findings are written to `knowledge/` with appropriate categorization (decisions, standards, patterns, runbooks, lessons)
-4. **Validate** - future agents reference and verify knowledge; stale entries are updated, deprecated, or archived
+```
+Collect (during work) → Curate (at completion) → Promote (to knowledge/) → Validate (across future work)
+```
+
+Every work item must produce a knowledge outcome — either something was promoted, or a clear reason why nothing qualified.
 
 ### Work Items
 
-Work items tune the AI's approach to match the task. Each work item creates an isolated workspace under `.coao/<type>s/<slug>/` with a shared ticket (`context.md`) and role-specific directories (`product-owner/`, `solution-architect/`, `software-engineer/`, `qa-engineer/`).
+Work comes in different shapes. A bug fix, a new feature, a research spike — each has a natural lifecycle and needs different agent involvement. COAO defines seven types:
+
+| Type | Scale | When |
+|------|-------|------|
+| project | Weeks–months | Building or evolving a system |
+| feature | Days–weeks | Adding a new capability |
+| fix | Hours–days | Repairing a bug |
+| task | Minutes–hours | A single atomic action |
+| spike | Hours–days | Research to reduce uncertainty |
+| chore | Hours | Maintenance, tech debt |
+| release | Hours | Cutting a version |
+
+The agent reads the task, picks the type, selects the right agents, and executes. Smaller types skip unnecessary ceremony — a config change is done in minutes, a feature runs through research → design → implement → validate.
 
 ### Artifact-Driven Communication
 
-Agents communicate through shared workspace artifacts, not conversation history. The workspace is organized like a Jira ticket:
+Agents communicate through shared workspace artifacts, not conversation history.
 
-- **`context.md`** - the shared ticket: summary, workflow, requirements, design overview, implementation summary, validation results, status, risks, and next actions. Each agent owns their domain's section; no one edits another agent's contribution.
-- **`decisions.md`** - decision log recording context, problem, alternatives, rationale, and trade-offs
-- **Role directories** (`product-owner/`, `solution-architect/`, `software-engineer/`, `qa-engineer/`) - deep work, research, and tracking owned by each role, with no prescribed structure
+Each work item creates an isolated workspace:
+
+```
+.coao/<type>s/<slug>/
+├── context.md              - Shared ticket (like a Jira issue)
+├── decisions.md            - Decision log
+├── product-owner/          - Requirements, user stories
+├── solution-architect/     - Design, architecture research
+├── software-engineer/      - Implementation notes
+├── qa-engineer/            - Test plans, validation results
+├── attachments/
+└── knowledge-candidates/
+```
+
+`context.md` is the shared ticket — every agent reads it to understand the current state, and each agent owns their domain's sections (PO owns requirements, SA owns design, SE owns implementation, QA owns validation). No one edits another agent's contribution without agreement.
 
 The boundary rule: if every agent needs it, it goes in `context.md`. If one role owns it, it goes in their directory. Duplication is a violation.
 
-This approach ensures that any agent can continue work by reading the workspace without needing prior conversation context.
+A new agent should understand the work item by reading the workspace without needing prior conversation.
 
-## Architecture
+---
 
-### Agent Layer
+## How It Works
 
-Five subagent definitions in `.opencode/agents/`, each a Markdown file with YAML front-matter specifying description, temperature, mode (subagent), and tool permissions. Agents are invoked via the `task` tool.
+A concrete example — a bug report:
 
-### Policy Layer
+1. **Initiate** — the agent reads the report, classifies it as a `fix`, creates `.coao/fixes/login-error/`, and writes the initial plan to `context.md`.
+2. **Investigate** — Software Engineer reproduces the bug, diagnoses the root cause, documents findings in `software-engineer/`. Updates `context.md` with status.
+3. **Fix** — SE implements the fix, notes the approach and any trade-offs in `software-engineer/`. Updates `context.md` — ready for review.
+4. **Validate** — QA Engineer reads `context.md` and the implementation notes, writes test scenarios, validates the fix works and nothing regressed. Signs off in `context.md`.
+5. **Merge** — the branch is merged. `context.md` is finalized.
+6. **Knowledge review** — any reusable findings (a testing pattern, a root cause category) are flagged as knowledge candidates. A knowledge outcome is recorded.
+7. **Archive** — workspace is archived. Knowledge lives on in `knowledge/`.
 
-Eight policies organized into three domains, loaded on a need-to-know basis:
+The same structure scales down (a chore skips steps 2–4, no workspace needed) and up (a feature runs PO → SA → SE → QA in sequence).
 
-| Domain | Policy | Purpose |
-|--------|--------|---------|
-| **Behavior** | communication.md | Agent collaboration and artifact usage |
+---
+
+## What's Included
+
+### 5 Agents
+
+| Agent | Domain | Key constraint |
+|-------|--------|----------------|
+| Product Owner | Requirements, business value, user stories | Never reads source code |
+| Solution Architect | Technical design, trade-offs, architecture | Reduces technical uncertainty |
+| Software Engineer | Implementation, debugging, code changes | Production delivery |
+| QA Engineer | Validation, testing, release confidence | Quality sign-off |
+| True Researcher | Unbiased external research | Never reads project files ("eliminate X") |
+
+Each agent has YAML front-matter (mode, temperature, permissions), a decision framework, a quality checklist, defined edit scope, and consultation protocols. Agents are invoked through OpenCode's `task` tool with `subagent_type`.
+
+### 8 Policies
+
+| Domain | Policy | What it guides |
+|--------|--------|----------------|
+| Behavior | communication.md | Artifact-driven collaboration |
 | | discipline.md | Tool and technology selection |
-| **Governance** | decisions.md | Decision recording and ADR lifecycle |
-| | knowledge.md | Memory vs knowledge distinction and promotion pipeline |
-| **Operations** | collaboration.md | Multi-agent consultation model |
-| | initiation.md | Work item initiation and workflow design |
-| | work-items.md | Work item types, lifecycles, and agent involvement |
+| Governance | decisions.md | Decision recording and ADR lifecycle |
+| | knowledge.md | Memory vs knowledge distinction and pipeline |
+| Operations | initiation.md | Work item classification and workflow design |
+| | collaboration.md | Multi-agent consultation model |
+| | work-items.md | Types, lifecycles, and agent involvement |
 | | workspace.md | Workspace layout and lifecycle |
 
+Policies are loaded at session start through `opencode.json`. They follow a consistent pattern: Purpose → Principles → Mechanics → Anti-patterns → Success criteria.
+
+### 3 Skills
+
+- **git-branching** — consistent naming, safe merge workflow
+- **git-worktree** — isolated development environments per work item
+- **prototype** — throwaway exploration to validate design decisions
+
 ---
 
-## Installation
-
-### Prerequisites
-
-- [OpenCode](https://opencode.ai) installed
-
-### Install
+## Quick Start
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/master/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/main/install.sh | bash
 ```
 
-The install script copies agent definitions, rules, skills, and configuration into your project's `.opencode/` directory. It supports two installation modes:
+Choose **project-wide** (`.opencode/` in current directory) or **global** (`~/.config/opencode/`). Launch OpenCode — agents, policies, and skills are loaded automatically.
 
-- **Project-wide** - files are placed in `<project>/.opencode/`
-- **Global** - files are placed in `~/.config/opencode/`
-
-After installation, launch OpenCode in the project directory. The agents, rules, and skills defined by COAO are automatically loaded.
-
-### Contents
-
-Installing COAO adds to your project:
-
-- Agent definitions and guiding policies
-- Workspace initialization templates
-- Knowledge governance pipeline configuration
-
----
-
-## Comparison
-
-| Capability | COAO | Unstructured Agent Setup |
-|-----------|------|--------------------------|
-| Agent roles | 5 roles tuned for their domain | Single general-purpose agent |
-| Guiding policies | 8 lightweight policies across 3 domains | None or ad-hoc instructions |
-| Knowledge vs memory | Clear separation with promotion pipeline | No distinction; insights are lost |
-| Work item types | 7 types matching task to workflow | No task matching |
-| Workspace isolation | Per-task directories with shared context | No isolation |
-| Artifact-driven communication | context.md (shared ticket), decisions.md, role-specific artifacts | Conversation history |
-| Tool guidance | Built-in > skill when appropriate | No guidance |
-| Session recovery | Read workspace, pick up where you left off | Start from scratch |
-| Knowledge persistence | Collect → curate → promote → validate | Not addressed |
+To verify: start a task and watch the agent classify it, set up the workspace, and begin the workflow.
 
 ---
 
 ## Contributing
 
-Contributions to agent definitions, rules, skills, and documentation are welcome. Open an issue or pull request on [GitHub](https://github.com/BirajMainali/coao).
+Contributions are welcome. Open an issue or pull request on [GitHub](https://github.com/BirajMainali/coao).
 
 ---
 
