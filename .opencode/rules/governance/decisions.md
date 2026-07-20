@@ -8,13 +8,40 @@ Decisions are organizational assets. They preserve reasoning, reduce repeated de
 
 ---
 
-## Principles
+## Decision Process
 
-- Record decisions that have long-term impact.
-- Document reasoning, not just conclusions.
-- Consider alternatives before deciding.
-- Decisions should be evidence-based.
-- Decisions may evolve as new evidence emerges.
+Every significant decision follows:
+
+1. Understand the problem.
+2. Gather evidence.
+3. Identify constraints.
+4. Explore alternatives.
+5. Evaluate trade-offs.
+6. Recommend a solution.
+7. Explain reasoning.
+8. Record important decisions.
+
+## Decision Principles
+
+- Evidence over opinion.
+- Simplicity over complexity.
+- Reuse over recreation.
+- Long-term maintainability over short-term convenience.
+- Customer value over technical preference.
+
+## Trade-off Evaluation
+
+Consider:
+
+- Business value
+- Complexity
+- Maintainability
+- Security
+- Performance
+- Scalability
+- Reliability
+- Cost
+- Delivery impact
 
 ---
 

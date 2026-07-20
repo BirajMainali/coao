@@ -11,9 +11,9 @@ Follow the initiation sequence (classify → validate → plan → workspace →
 ## Project Structure
 
 - `.opencode/rules/` - Organizational policies organized by domain
-  - `behavior/` - Communication, decision-making, quality, research
-  - `governance/` - Decisions, knowledge, standards
-  - `operations/` - Workspace, collaboration, session, handoff, artifacts, initiation
+  - `behavior/` - Communication, discipline
+  - `governance/` - Decisions, knowledge
+  - `operations/` - Initiation, work-items, workspace, collaboration
 - `.opencode/agents/` - Subagent definitions with YAML front-matter (PO, QA, SE, SA, TR)
 - `.opencode/skills/` - Reusable skill definitions
 - `.opencode/AGENTS.md` - Primary opencode instructions
@@ -23,9 +23,9 @@ Follow the initiation sequence (classify → validate → plan → workspace →
 
 Rules are loaded automatically by domain. Available domains:
 
-- **behavior/** — Communication, decision-making, quality, research, discipline
-- **governance/** — Decisions, knowledge, standards
-- **operations/** — Initiation, work-items, workspace, collaboration, session, handoff, artifacts
+- **behavior/** — Communication, discipline
+- **governance/** — Decisions, knowledge
+- **operations/** — Initiation, work-items, workspace, collaboration
 
 ## Agents
 

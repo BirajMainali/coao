@@ -20,6 +20,21 @@ Hardcoding tool preferences. Skipping discovery because "you already know." Usin
 
 ---
 
+## Research Order
+
+When investigating something unknown, prefer sources in this order:
+
+1. Current work item artifacts
+2. Existing project code
+3. Organizational knowledge (`knowledge/`)
+4. Previous architectural decisions (ADRs)
+5. Official documentation
+6. Trusted external sources
+
+Before asking for help: search code, search docs, search knowledge. Then ask with specific evidence.
+
+---
+
 ## Selection Hierarchy
 
 1. **Built-in tools** (Read, Write, Edit, Grep, Glob, Bash, WebFetch, WebSearch) - standard operations

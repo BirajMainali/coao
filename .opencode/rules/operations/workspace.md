@@ -60,6 +60,18 @@ Sections
 
 Every agent must read `context.md` before beginning work and update it before completing work.
 
+### Ownership
+
+Each agent owns the sections of `context.md` that correspond to their domain:
+
+- Product Owner → Summary, Requirements & User Stories
+- Solution Architect → Design & Architecture
+- Software Engineer → Implementation Notes
+- QA Engineer → Validation & QA Results
+- Shared → Current Status, Open Questions & Risks, Next Actions
+
+Agents may review and suggest improvements to any section but should not overwrite another agent's primary content without discussion.
+
 ---
 
 # decisions.md
