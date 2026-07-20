@@ -44,7 +44,7 @@ Work comes in different shapes. A bug fix, a new feature, a research spike - eac
 | chore | Hours | Maintenance, tech debt |
 | release | Hours | Cutting a version |
 
-The agent reads the task, picks the type, selects the right agents, and executes. Smaller types skip unnecessary ceremony - a config change is done in minutes, a feature runs through research -> design -> implement -> validate.
+The agent reads the task, picks the type, and decides what level of structure the work warrants. A config change might skip the workspace entirely. A feature might pull in multiple agents across research, design, implementation, and validation. The task decides.
 
 ### Artifact-Driven Communication
 
@@ -82,7 +82,7 @@ A concrete example - a bug report:
 6. **Knowledge review** - any reusable findings (a testing pattern, a root cause category) are flagged as knowledge candidates. A knowledge outcome is recorded.
 7. **Archive** - workspace is archived. Knowledge lives on in `knowledge/`.
 
-The same structure scales down (a chore skips steps 2-4, no workspace needed) and up (a feature runs PO -> SA -> SE -> QA in sequence).
+The same workspace structure scales with the task - a chore might skip investigation and validation entirely, while a feature might pull in the architect for design and QA for sign-off. The agent chooses what the task needs.
 
 ## What's Included
 
