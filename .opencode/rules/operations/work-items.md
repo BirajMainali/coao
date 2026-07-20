@@ -53,24 +53,27 @@ prepared → tested → shipped
 .coao/<type>s/<slug>/
 ├── context.md
 ├── decisions.md
-├── research.md
+├── product-owner/         (if PO involved)
+├── solution-architect/    (if SA involved)
+├── software-engineer/     (if SE involved)
+├── qa-engineer/           (if QA involved)
 ├── attachments/
 └── knowledge-candidates/
 ```
 
 All types get a workspace directory. The required contents vary:
 
-| Type | context.md | decisions.md | research.md | attachments | knowledge-candidates |
-|------|-----------|-------------|------------|-------------|-------------------|
-| project | ✓ | ✓ | optional | ✓ | ✓ (curated quarterly) |
-| feature | ✓ | ✓ | optional | ✓ | ✓ (curated on completion) |
-| fix | ✓ | optional | - | optional | - |
-| task | ✓ | - | - | - | - |
-| spike | ✓ | ✓ | ✓ | ✓ | ✓ (curated on completion) |
-| chore | ✓ | - | - | - | - |
-| release | ✓ | ✓ | - | ✓ | - |
+| Type | context.md | decisions.md | attachments | knowledge-candidates |
+|------|-----------|-------------|-------------|-------------------|
+| project | ✓ | ✓ | ✓ | ✓ (curated quarterly) |
+| feature | ✓ | ✓ | ✓ | ✓ (curated on completion) |
+| fix | ✓ | optional | optional | - |
+| task | ✓ | - | - | - |
+| spike | ✓ | ✓ | ✓ | ✓ (curated on completion) |
+| chore | ✓ | - | - | - |
+| release | ✓ | ✓ | ✓ | - |
 
-Files not listed for a type should not be created.
+Role directories (product-owner/, solution-architect/, software-engineer/, qa-engineer/) exist when the work item type involves that agent. See Agent Involvement table below.
 
 ---
 
