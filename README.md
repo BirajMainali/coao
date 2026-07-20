@@ -113,24 +113,18 @@ Five subagent definitions in `.opencode/agents/`, each a Markdown file with YAML
 
 ### Policy Layer
 
-Ten codified policies organized into three domains, loaded on a need-to-know basis:
+Eight policies organized into three domains, loaded on a need-to-know basis:
 
 | Domain | Policy | Purpose |
 |--------|--------|---------|
 | **Behavior** | communication.md | Agent collaboration and artifact usage |
-| | decision-making.md | Evidence-based decision process |
-| | quality.md | Deliverable quality standards |
-| | research.md | Investigation and uncertainty reduction |
 | | discipline.md | Tool and technology selection |
 | **Governance** | decisions.md | Decision recording and ADR lifecycle |
 | | knowledge.md | Memory vs knowledge distinction and promotion pipeline |
-| | standards.md | Standards lifecycle and compliance |
-| **Operations** | work-items.md | Work item types, lifecycles, and agent involvement |
+| **Operations** | collaboration.md | Multi-agent consultation model |
+| | initiation.md | Work item initiation and workflow design |
+| | work-items.md | Work item types, lifecycles, and agent involvement |
 | | workspace.md | Workspace layout and lifecycle |
-| | collaboration.md | Multi-agent consultation model |
-| | session.md | Session continuity and recovery |
-| | handoff.md | Ownership transfer protocol |
-| | artifacts.md | Artifact-driven communication |
 
 ---
 
@@ -168,7 +162,7 @@ Installing COAO adds to your project:
 | Capability | COAO | Unstructured Agent Setup |
 |-----------|------|--------------------------|
 | Agent roles | 5 roles tuned for their domain | Single general-purpose agent |
-| Guiding policies | 14 lightweight policies across 3 domains | None or ad-hoc instructions |
+| Guiding policies | 8 lightweight policies across 3 domains | None or ad-hoc instructions |
 | Knowledge vs memory | Clear separation with promotion pipeline | No distinction; insights are lost |
 | Work item types | 7 types matching task to workflow | No task matching |
 | Workspace isolation | Per-task directories with shared context | No isolation |
