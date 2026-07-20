@@ -106,15 +106,17 @@ Work is organized into typed work items. Each type defines its lifecycle, agent 
 | **chore** | Hours | started → done → merged | SE |
 | **release** | Hours | prepared → tested → shipped | SE → QA |
 
-Each work item creates an isolated workspace under `.coao/<type>s/<slug>/` containing shared artifacts (`context.md`, `decisions.md`, `research.md`, `attachments/`, `knowledge-candidates/`).
+Each work item creates an isolated workspace under `.coao/<type>s/<slug>/` with a shared ticket (`context.md`) and role-specific directories (`product-owner/`, `solution-architect/`, `software-engineer/`, `qa-engineer/`).
 
 ### Artifact-Driven Communication
 
-Agents communicate through shared workspace artifacts, not conversation history. The three core artifacts are:
+Agents communicate through shared workspace artifacts, not conversation history. The workspace is organized like a Jira ticket:
 
-- **`context.md`** - single living document with sections for summary, status, requirements, design, implementation notes, validation results, risks, and next actions
+- **`context.md`** - the shared ticket: summary, workflow, requirements, design overview, implementation summary, validation results, status, risks, and next actions. Each agent owns their domain's section; no one edits another agent's contribution.
 - **`decisions.md`** - decision log recording context, problem, alternatives, rationale, and trade-offs
-- **`research.md`** - investigation notes with findings, evidence, assumptions, and recommendations
+- **Role directories** (`product-owner/`, `solution-architect/`, `software-engineer/`, `qa-engineer/`) - deep work, research, and tracking owned by each role, with no prescribed structure
+
+The boundary rule: if every agent needs it, it goes in `context.md`. If one role owns it, it goes in their directory. Duplication is a violation.
 
 This approach ensures that any agent can continue work by reading the workspace without needing prior conversation context.
 
@@ -272,7 +274,7 @@ Installing COAO adds to your project:
 | Knowledge vs memory | Explicit separation with governance pipeline | No distinction; insights are lost |
 | Work item types | 7 types with distinct lifecycles and agent maps | No formal classification |
 | Workspace isolation | Per-mission directories with shared artifacts | No isolation |
-| Artifact-driven communication | context.md, decisions.md, research.md | Conversation history |
+| Artifact-driven communication | context.md (shared ticket), decisions.md, role-specific artifacts | Conversation history |
 | Tool selection guide | Policy-based (built-in > skill) | No guidance |
 | Session recovery | Read workspace, restore context | Start from scratch |
 | Knowledge persistence | Staged pipeline (collect → curate → promote → validate) | Not addressed |
