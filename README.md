@@ -122,7 +122,7 @@ Policies are loaded at session start through `opencode.json`. They follow a cons
 ## Quick Start
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/BirajMainali/coao/master/install.sh | bash
 ```
 
 Choose **project-wide** (`.opencode/` in current directory) or **global** (`~/.config/opencode/`). Launch OpenCode - agents, policies, and skills are loaded automatically.
