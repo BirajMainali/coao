@@ -1,6 +1,6 @@
 # COAO - Collaborative Agent Operating Organization
 
-A structured multi-agent engineering environment for [OpenCode](https://opencode.ai). COAO defines specialized agent roles, codified organizational policies, and a knowledge governance system that separates working memory from reusable knowledge.
+A multi-agent tuning layer for [OpenCode](https://opencode.ai). COAO connects specialized agent roles with shared context and persistent knowledge — guiding agents to collaborate like a real engineering team without forcing them into rigid boxes.
 
 ---
 
@@ -27,13 +27,13 @@ A structured multi-agent engineering environment for [OpenCode](https://opencode
 
 ## Overview
 
-COAO organizes AI agents into a structured engineering organization with specialized roles, codified rules, and workspace-based work items. It provides:
+COAO tunes AI agents to work together naturally. Instead of one agent doing everything, each agent has a clear role — product owner, architect, engineer, QA, researcher — and the framework connects them through shared context and persistent knowledge. It provides:
 
-- **Role separation** - five agent types with distinct responsibilities and constraints
-- **Organizational policies** - codified rules for behavior, governance, and operations
-- **Knowledge governance** - a staged pipeline separating transient memory from permanent knowledge
-- **Workspace isolation** - per-mission directories preventing context leakage
-- **Tool discipline** - guidelines for selecting between built-in tools and skills
+- **Role-matched agents** - five types, each tuned for what it does best
+- **Guiding policies** - gentle structure for behavior, governance, and operations
+- **Knowledge that sticks** - a pipeline that turns working memory into reusable intelligence
+- **Focused workspaces** - per-task isolation that keeps context clean without overhead
+- **Tool awareness** - guidance on when to use built-in tools vs specialized skills
 
 COAO is not a library or framework. It is a configuration layer that runs on OpenCode and is installable into any project.
 
@@ -52,19 +52,19 @@ Most AI-assisted software development setups share common structural weaknesses:
 | Conversation-driven communication | History is the only record |
 | No learning mechanism | Same mistakes recur across sessions |
 
-These are organizational problems, not technical ones. COAO addresses them by imposing structure on how agents collaborate, make decisions, and persist what they learn.
+These are organizational problems, not technical ones. COAO addresses them by connecting the dots — guiding agents to collaborate naturally, make better decisions, and keep what they learn.
 
 ---
 
 ## Solution
 
-COAO provides a structured operating model for agent collaboration:
+COAO connects the right agent capabilities to the right workflow:
 
-1. **Specialized agent roles** - each with defined ownership, decision frameworks, quality checklists, and constraints
-2. **Codified organizational policies** - rules organized by domain (behavior, governance, operations) loaded at session start
-3. **Knowledge governance pipeline** - collect, curate, promote, and validate reusable intelligence
-4. **Workspace-based work items** - per-mission isolation with type-specific lifecycles
-5. **Tool selection guidelines** - when to use built-in tools or skills
+1. **Matched agent roles** - each tuned for its domain, with decision frameworks and quality checks that amplify natural strengths
+2. **Guiding policies** - lightweight structure for behavior, governance, and operations loaded at session start
+3. **Knowledge that persists** - collect, curate, promote, and validate so insights don't vanish
+4. **Workspace per task** - isolated workspaces with a shared ticket and role-specific work areas
+5. **Tool guidance** - know when to use built-in tools or specialized skills
 
 ---
 
@@ -94,7 +94,7 @@ The knowledge pipeline operates in four stages:
 
 ### Work Items
 
-Work is organized into typed work items. Each type defines its lifecycle, agent involvement, and workspace contents:
+Work items tune the AI's approach to match the task. Each type connects the right agents and workflow naturally — no forcing, just fitting the tool to the job:
 
 | Type | Scale | Lifecycle | Agents |
 |------|-------|-----------|--------|
@@ -177,7 +177,7 @@ Three skills extend agent capabilities:
 | **git-worktree** | Isolated branch-based development with Git worktrees |
 | **grilling** | Interactive design and plan review |
 
-Tool discipline policy provides selection guidelines: prefer built-in tools for standard operations and skills for guided workflows.
+The tool policy guides selection: built-in tools for standard operations, skills for specialized workflows.
 
 ---
 
@@ -269,15 +269,15 @@ Installing COAO adds to your project:
 
 | Capability | COAO | Unstructured Agent Setup |
 |-----------|------|--------------------------|
-| Agent roles | 5 specialized roles with defined ownership | Single general-purpose agent |
-| Organizational policies | 14 codified rules across 3 domains | None or ad-hoc instructions |
-| Knowledge vs memory | Explicit separation with governance pipeline | No distinction; insights are lost |
-| Work item types | 7 types with distinct lifecycles and agent maps | No formal classification |
-| Workspace isolation | Per-mission directories with shared artifacts | No isolation |
+| Agent roles | 5 roles tuned for their domain | Single general-purpose agent |
+| Guiding policies | 14 lightweight policies across 3 domains | None or ad-hoc instructions |
+| Knowledge vs memory | Clear separation with promotion pipeline | No distinction; insights are lost |
+| Work item types | 7 types matching task to workflow | No task matching |
+| Workspace isolation | Per-task directories with shared context | No isolation |
 | Artifact-driven communication | context.md (shared ticket), decisions.md, role-specific artifacts | Conversation history |
-| Tool selection guide | Policy-based (built-in > skill) | No guidance |
-| Session recovery | Read workspace, restore context | Start from scratch |
-| Knowledge persistence | Staged pipeline (collect → curate → promote → validate) | Not addressed |
+| Tool guidance | Built-in > skill when appropriate | No guidance |
+| Session recovery | Read workspace, pick up where you left off | Start from scratch |
+| Knowledge persistence | Collect → curate → promote → validate | Not addressed |
 
 ---
 
@@ -287,4 +287,4 @@ Contributions to agent definitions, rules, skills, and documentation are welcome
 
 ---
 
-COAO is built on the premise that structured collaboration produces better outcomes than ad-hoc interaction. Clear roles, policies, and knowledge governance enable agents to focus on their domain without reinventing process or losing what they learn.
+COAO is built on a simple premise: agents perform best when their strengths are matched to the right task, they have the context they need, and what they learn doesn't disappear. The structure exists to reduce friction, not to constrain.
