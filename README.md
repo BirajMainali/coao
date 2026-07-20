@@ -94,19 +94,7 @@ The knowledge pipeline operates in four stages:
 
 ### Work Items
 
-Work items tune the AI's approach to match the task. Each type connects the right agents and workflow naturally — no forcing, just fitting the tool to the job:
-
-| Type | Scale | Lifecycle | Agents |
-|------|-------|-----------|--------|
-| **project** | Weeks–months | active → archived | PO, SA, SE, QA |
-| **feature** | Days–weeks | proposed → designed → implemented → validated → merged | PO → SA → SE → QA |
-| **fix** | Hours–days | reported → reproduced → fixed → verified → merged | SE → QA |
-| **task** | Minutes–hours | assigned → done → merged | SE |
-| **spike** | Hours–days | started → researched → documented → resolved | SA (or True Researcher) |
-| **chore** | Hours | started → done → merged | SE |
-| **release** | Hours | prepared → tested → shipped | SE → QA |
-
-Each work item creates an isolated workspace under `.coao/<type>s/<slug>/` with a shared ticket (`context.md`) and role-specific directories (`product-owner/`, `solution-architect/`, `software-engineer/`, `qa-engineer/`).
+Work items tune the AI's approach to match the task. Each work item creates an isolated workspace under `.coao/<type>s/<slug>/` with a shared ticket (`context.md`) and role-specific directories (`product-owner/`, `solution-architect/`, `software-engineer/`, `qa-engineer/`).
 
 ### Artifact-Driven Communication
 
