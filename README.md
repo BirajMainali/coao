@@ -13,12 +13,9 @@ A multi-agent tuning layer for [OpenCode](https://opencode.ai). COAO connects sp
   - [Memory vs Knowledge](#memory-vs-knowledge)
   - [Work Items](#work-items)
   - [Artifact-Driven Communication](#artifact-driven-communication)
-  - [Agent Roles](#agent-roles)
 - [Architecture](#architecture)
   - [Agent Layer](#agent-layer)
   - [Policy Layer](#policy-layer)
-  - [Tool Layer](#tool-layer)
-- [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Comparison](#comparison)
 - [Contributing](#contributing)
@@ -108,24 +105,6 @@ The boundary rule: if every agent needs it, it goes in `context.md`. If one role
 
 This approach ensures that any agent can continue work by reading the workspace without needing prior conversation context.
 
-### Agent Roles
-
-COAO defines five agent roles. Each has a distinct domain of ownership, decision framework, quality checklist, and tool permissions:
-
-| Agent | Domain | Tool Access |
-|-------|--------|-------------|
-| **Product Owner** | Business requirements, value delivery | Edit + Bash |
-| **Solution Architect** | Technical design, architecture decisions | Edit + Bash |
-| **Software Engineer** | Production implementation | Edit + Bash |
-| **QA Engineer** | Quality validation, release confidence | Edit + Bash |
-| **True Researcher** | Context-free industry research | Edit (research.md only), Bash: none |
-
-The True Researcher is a specialized agent that conducts unbiased research using only web search and domain expertise. It has no access to project code, documentation, or execution, which prevents anchoring bias from existing context.
-
-Agents are self-contained and consult each other on demand using the `task` tool with the target agent's type. Ownership remains with the consulting agent throughout.
-
----
-
 ## Architecture
 
 ### Agent Layer
@@ -153,72 +132,6 @@ Ten codified policies organized into three domains, loaded on a need-to-know bas
 | | handoff.md | Ownership transfer protocol |
 | | artifacts.md | Artifact-driven communication |
 
-### Tool Layer
-
-Three skills extend agent capabilities:
-
-**Skills:**
-
-| Skill | Purpose |
-|-------|---------|
-| **caveman** | Compressed communication mode (~75% token reduction) |
-| **git-worktree** | Isolated branch-based development with Git worktrees |
-| **grilling** | Interactive design and plan review |
-
-The tool policy guides selection: built-in tools for standard operations, skills for specialized workflows.
-
----
-
-## Project Structure
-
-```
-.
-├── .opencode/                    # COAO configuration
-│   ├── AGENTS.md                 # Primary OpenCode instructions
-│   ├── opencode.json             # OpenCode configuration
-│   ├── agents/                   # Agent definitions
-│   │   ├── product-owner.md
-│   │   ├── solution-architect.md
-│   │   ├── software-engineer.md
-│   │   ├── qa-engineer.md
-│   │   └── true-researcher.md
-│   ├── rules/                    # Organizational policies
-│   │   ├── behavior/             # communication, decision-making, quality, research, discipline
-│   │   ├── governance/           # decisions, knowledge, standards
-│   │   └── operations/           # work-items, workspace, collaboration, session, handoff, artifacts
-│   └── skills/                   # Skill definitions
-│       ├── caveman/
-│       ├── git-worktree/
-│       └── grilling/
-│
-├── AGENTS.md -> .opencode/AGENTS.md
-├── opencode.json -> .opencode/opencode.json
-├── install.sh                    # Bootstrap installer
-│
-├── knowledge/                    # Reusable organizational intelligence
-│   ├── decisions/                # Architecture Decision Records
-│   ├── standards/                # Organizational standards
-│   ├── patterns/                 # Reusable patterns
-│   ├── runbooks/                 # Operational procedures
-│   └── lessons/                  # Lessons learned
-│
-└── .coao/                        # Active work item workspaces
-    ├── projects/
-    ├── features/
-    ├── fixes/
-    ├── tasks/
-    ├── spikes/
-    ├── chores/
-    └── releases/
-```
-
-Key structural notes:
-
-- `AGENTS.md` at root is a symlink to `.opencode/AGENTS.md` for OpenCode discovery
-- `opencode.json` at root is similarly symlinked
-- `knowledge/` persists across work items and is never archived
-- `.coao/` contains active workspaces; each is archived on work item completion
-
 ---
 
 ## Installation
@@ -244,10 +157,7 @@ After installation, launch OpenCode in the project directory. The agents, rules,
 
 Installing COAO adds to your project:
 
-- 5 agent definitions
-- 14 codified policies across 3 domains
-
-- 3 skill definitions
+- Agent definitions and guiding policies
 - Workspace initialization templates
 - Knowledge governance pipeline configuration
 
