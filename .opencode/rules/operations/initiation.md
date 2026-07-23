@@ -17,6 +17,7 @@ This rule provides the building blocks - available agents and work item types - 
 | Software Engineer | Implementation, code, bug fixes | Task needs code written, changed, or debugged |
 | QA Engineer | Validation, testing, release confidence | Task needs verification, edge case analysis, sign-off |
 | True Researcher | Unbiased external research | Task needs industry comparison, technology evaluation, answers outside project context |
+| Knowledge Steward | Knowledge lifecycle, curation, continuous improvement | Task needs knowledge triage, promotion, or stale detection |
 
 Agents can be combined in any sequence. Multiple agents can work in parallel when their work is independent. An agent can be skipped when the task doesn't need their domain.
 
@@ -39,7 +40,7 @@ Given a task, the agent designs the workflow. The sequence scales with the work 
 1. **Pick the type** - What kind of work is this? (reference the types above)
 2. **Validate classification** - Only when the type is ambiguous (e.g., "fix" vs "feature"). Skip for obvious classifications.
 3. **Pick the agents** - Which agents are needed? Single-agent work (task, chore) skips agent selection.
-4. **Search existing knowledge** - Required for feature, project, spike. Skip for task, chore.
+4. **Search existing knowledge** - Required for feature, project, spike. Skip for task, chore. Write a `[KNOWLEDGE-CHECK]` entry in `context.md` listing what was consulted and whether any stale entries were found. This artifact proves the step was done.
 5. **Plan** - Create the workspace and sketch the plan in `context.md`. Skip for task, chore (no workspace needed).
 6. **Confirm** - Present the plan for user approval. Skip for task, chore.
 

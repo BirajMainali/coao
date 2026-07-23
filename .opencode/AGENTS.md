@@ -34,6 +34,7 @@ Rules are loaded automatically by domain. Available domains:
 - `.opencode/agents/software-engineer.md` - Production implementation
 - `.opencode/agents/solution-architect.md` - Technical design and architecture
 - `.opencode/agents/true-researcher.md` - Unbiased, context-free research using web search and domain expertise (eliminates X)
+- `.opencode/agents/knowledge-steward.md` - Organizational knowledge lifecycle: discovery, triage, promotion, validation, and retirement
 
 ## Available Skills
 

@@ -4,7 +4,7 @@ set -euo pipefail
 usage() {
   echo "Usage: scaffold.sh <type> <slug>"
   echo ""
-  echo "Types: project, feature, fix, task, spike, chore, release"
+  echo "Types: knowledge, project, feature, fix, task, spike, chore, release"
   echo ""
   echo "Creates .coao/<type>s/<slug>/ with proper workspace structure."
   exit 1
@@ -17,19 +17,20 @@ SLUG="$2"
 
 # Validate type
 case "$TYPE" in
-  project|feature|fix|task|spike|chore|release) ;;
+  knowledge|project|feature|fix|task|spike|chore|release) ;;
   *) echo "Error: invalid type '$TYPE'"; usage ;;
 esac
 
 # Map type to plural directory name
 case "$TYPE" in
-  project) PLURAL="projects" ;;
-  feature) PLURAL="features" ;;
-  fix)     PLURAL="fixes" ;;
-  task)    PLURAL="tasks" ;;
-  spike)   PLURAL="spikes" ;;
-  chore)   PLURAL="chores" ;;
-  release) PLURAL="releases" ;;
+  knowledge) PLURAL="knowledge" ;;
+  project)   PLURAL="projects" ;;
+  feature)   PLURAL="features" ;;
+  fix)       PLURAL="fixes" ;;
+  task)      PLURAL="tasks" ;;
+  spike)     PLURAL="spikes" ;;
+  chore)     PLURAL="chores" ;;
+  release)   PLURAL="releases" ;;
 esac
 
 WORKSPACE=".coao/${PLURAL}/${SLUG}"
@@ -38,13 +39,14 @@ WORKSPACE=".coao/${PLURAL}/${SLUG}"
 # Based on work-items.md Agent Involvement table
 declare -a ROLES
 case "$TYPE" in
-  project) ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" ) ;;
-  feature) ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" ) ;;
-  fix)     ROLES=( "software-engineer" "qa-engineer" ) ;;
-  task)    ROLES=( "software-engineer" ) ;;
-  spike)   ROLES=( "solution-architect" ) ;;
-  chore)   ROLES=( "software-engineer" ) ;;
-  release) ROLES=( "software-engineer" "qa-engineer" ) ;;
+  knowledge) ROLES=( "knowledge-steward" ) ;;
+  project)   ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" ) ;;
+  feature)   ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" ) ;;
+  fix)       ROLES=( "software-engineer" "qa-engineer" ) ;;
+  task)      ROLES=( "software-engineer" ) ;;
+  spike)     ROLES=( "solution-architect" ) ;;
+  chore)     ROLES=( "software-engineer" ) ;;
+  release)   ROLES=( "software-engineer" "qa-engineer" ) ;;
 esac
 
 echo "Scaffolding $TYPE workspace: $WORKSPACE"
@@ -53,14 +55,9 @@ echo "Scaffolding $TYPE workspace: $WORKSPACE"
 mkdir -p "$WORKSPACE"
 
 has_decisions="true"
-has_knowledge="true"
 
 case "$TYPE" in
   task|chore) has_decisions="false" ;;
-esac
-
-case "$TYPE" in
-  fix|task|chore|release) has_knowledge="false" ;;
 esac
 
 for role in "${ROLES[@]}"; do
@@ -68,10 +65,6 @@ for role in "${ROLES[@]}"; do
 done
 
 mkdir -p "$WORKSPACE/attachments"
-
-if [ "$has_knowledge" = "true" ]; then
-  mkdir -p "$WORKSPACE/knowledge-candidates"
-fi
 
 # Write context.md
 # Determine which sections go in context.md
@@ -87,7 +80,7 @@ case "$TYPE" in
 esac
 
 case "$TYPE" in
-  project|feature|spike) SECTIONS="$SECTIONS Knowledge_Outcome" ;;
+  knowledge|project|feature|spike) SECTIONS="$SECTIONS Knowledge_Outcome" ;;
 esac
 
 # Build context.md

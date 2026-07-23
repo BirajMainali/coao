@@ -20,16 +20,17 @@ PARENT_DIR="$(basename "$(dirname "$WORKSPACE")")"
 SLUG="$(basename "$WORKSPACE")"
 
 case "$PARENT_DIR" in
-  projects) TYPE="project" ;;
-  features) TYPE="feature" ;;
-  fixes)    TYPE="fix" ;;
-  tasks)    TYPE="task" ;;
-  spikes)   TYPE="spike" ;;
-  chores)   TYPE="chore" ;;
-  releases) TYPE="release" ;;
+  knowledge) TYPE="knowledge" ;;
+  projects)  TYPE="project" ;;
+  features)  TYPE="feature" ;;
+  fixes)     TYPE="fix" ;;
+  tasks)     TYPE="task" ;;
+  spikes)    TYPE="spike" ;;
+  chores)    TYPE="chore" ;;
+  releases)  TYPE="release" ;;
   *)
     echo "ERROR: Cannot determine type from parent directory '$PARENT_DIR'"
-    echo "Expected one of: projects, features, fixes, tasks, spikes, chores, releases"
+    echo "Expected one of: knowledge, projects, features, fixes, tasks, spikes, chores, releases"
     exit 1
     ;;
 esac
@@ -53,27 +54,14 @@ declare -a REQUIRED_ROLES
 declare -a OPTIONAL_ROLES
 
 case "$TYPE" in
-  project)
-    REQUIRED_ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" )
-    ;;
-  feature)
-    REQUIRED_ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" )
-    ;;
-  fix)
-    REQUIRED_ROLES=( "software-engineer" "qa-engineer" )
-    ;;
-  task)
-    REQUIRED_ROLES=( "software-engineer" )
-    ;;
-  spike)
-    REQUIRED_ROLES=( "solution-architect" )
-    ;;
-  chore)
-    REQUIRED_ROLES=( "software-engineer" )
-    ;;
-  release)
-    REQUIRED_ROLES=( "software-engineer" "qa-engineer" )
-    ;;
+  knowledge) REQUIRED_ROLES=( "knowledge-steward" ) ;;
+  project)   REQUIRED_ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" ) ;;
+  feature)   REQUIRED_ROLES=( "product-owner" "solution-architect" "software-engineer" "qa-engineer" ) ;;
+  fix)       REQUIRED_ROLES=( "software-engineer" "qa-engineer" ) ;;
+  task)      REQUIRED_ROLES=( "software-engineer" ) ;;
+  spike)     REQUIRED_ROLES=( "solution-architect" ) ;;
+  chore)     REQUIRED_ROLES=( "software-engineer" ) ;;
+  release)   REQUIRED_ROLES=( "software-engineer" "qa-engineer" ) ;;
 esac
 
 echo "--- Role Directories ---"
@@ -94,24 +82,11 @@ else
   echo "  OK   attachments/"
 fi
 
-# ---- 4. knowledge-candidates/ directory (type-dependent) ----
-has_knowledge="true"
+# ---- 4. Knowledge Outcome check (type-dependent) ----
+check_knowledge_outcome="false"
 case "$TYPE" in
-  fix|task|chore|release) has_knowledge="false" ;;
+  knowledge|project|feature|spike) check_knowledge_outcome="true" ;;
 esac
-
-if [ "$has_knowledge" = "false" ]; then
-  if [ -d "$WORKSPACE/knowledge-candidates" ]; then
-    echo "  OK   knowledge-candidates/ (exists, optional for $TYPE)"
-  fi
-else
-  if [ ! -d "$WORKSPACE/knowledge-candidates" ]; then
-    echo "ERROR: Missing required knowledge-candidates/ directory"
-    ERRORS=$((ERRORS + 1))
-  else
-    echo "  OK   knowledge-candidates/"
-  fi
-fi
 
 # ---- 5. context.md exists and has required sections ----
 echo ""
@@ -187,11 +162,16 @@ fi
 # ---- 7. Knowledge Outcome ----
 echo ""
 echo "--- Knowledge Outcome ---"
-if grep -q '^## Knowledge Outcome' "$CONTEXT_FILE" 2>/dev/null; then
-  if grep -qE '\[KNOWLEDGE-PROMOTED\]|\[KNOWLEDGE-NONE\]' "$CONTEXT_FILE" 2>/dev/null; then
-    echo "  OK   Knowledge Outcome documented"
+if [ "$check_knowledge_outcome" = "true" ]; then
+  if grep -q '^## Knowledge Outcome' "$CONTEXT_FILE" 2>/dev/null; then
+    if grep -qE '\[KNOWLEDGE-PROMOTED\]|\[KNOWLEDGE-CANDIDATE-FILED\]|\[KNOWLEDGE-NONE\]' "$CONTEXT_FILE" 2>/dev/null; then
+      echo "  OK   Knowledge Outcome documented"
+    else
+      echo "WARN: Knowledge Outcome section exists but no outcome recorded"
+      WARNINGS=$((WARNINGS + 1))
+    fi
   else
-    echo "WARN: Knowledge Outcome section exists but no outcome recorded"
+    echo "WARN: Missing Knowledge Outcome section in context.md"
     WARNINGS=$((WARNINGS + 1))
   fi
 fi

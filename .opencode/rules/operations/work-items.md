@@ -12,6 +12,7 @@ Every unit of work in this organization is a **work item** with a declared type.
 
 | Type | Scale | Purpose | Agents |
 |------|-------|---------|--------|
+| **knowledge** | Continuous | Knowledge discovery, curation, and improvement. Output is organizational intelligence. | Knowledge Steward (always); any agent can contribute |
 | **project** | Weeks–months | Build or evolve a product. No fixed end; iterates. | PO (always), SA, SE, QA (on-demand) |
 | **feature** | Days–weeks | Add a new capability. Clear definition of done. | PO → SA → SE → QA |
 | **fix** | Hours–days | Repair a bug or regression. | SE → QA |
@@ -23,6 +24,9 @@ Every unit of work in this organization is a **work item** with a declared type.
 ---
 
 ## Lifecycle by Type
+
+### knowledge
+active → curated → (repeats) — never archives; runs continuously
 
 ### project
 active → archived (when the project ends)
@@ -57,21 +61,21 @@ prepared → tested → shipped
 ├── solution-architect/    (if SA involved)
 ├── software-engineer/     (if SE involved)
 ├── qa-engineer/           (if QA involved)
-├── attachments/
-└── knowledge-candidates/
+└── attachments/
 ```
 
 All types get a workspace directory. The required contents vary:
 
-| Type | context.md | decisions.md | attachments | knowledge-candidates |
-|------|-----------|-------------|-------------|-------------------|
-| project | ✓ | ✓ | ✓ | ✓ (curated quarterly) |
-| feature | ✓ | ✓ | ✓ | ✓ (curated on completion) |
-| fix | ✓ | optional | optional | - |
-| task | ✓ | - | - | - |
-| spike | ✓ | ✓ | ✓ | ✓ (curated on completion) |
-| chore | ✓ | - | - | - |
-| release | ✓ | ✓ | ✓ | - |
+| Type | context.md | decisions.md | attachments |
+|------|-----------|-------------|-------------|
+| knowledge | ✓ | ✓ | ✓ |
+| project | ✓ | ✓ | ✓ |
+| feature | ✓ | ✓ | ✓ |
+| fix | ✓ | optional | optional |
+| task | ✓ | - | - |
+| spike | ✓ | ✓ | ✓ |
+| chore | ✓ | - | - |
+| release | ✓ | ✓ | ✓ |
 
 Role directories (product-owner/, solution-architect/, software-engineer/, qa-engineer/) exist when the work item type involves that agent. See Agent Involvement table below.
 
@@ -81,6 +85,7 @@ Role directories (product-owner/, solution-architect/, software-engineer/, qa-en
 
 | Type | Who drives | Who reviews |
 |------|-----------|-------------|
+| knowledge | Knowledge Steward discovers, triages, and promotes | Outcomes reviewed by PO or SA |
 | project | PO defines → SA architects → SE builds → QA validates (iterative cycles) | PO & SA review each cycle |
 | feature | PO defines requirements → SA designs → SE implements → QA validates | QA signs off |
 | fix | SE diagnoses and fixes → QA verifies | QA signs off |
@@ -101,7 +106,7 @@ A work item is complete when:
 4. The associated branch is merged.
 5. The workspace is archived.
 
-Project-type items archive when the project ends. All other types archive immediately on completion.
+Knowledge-type items run continuously and never archive. Project-type items archive when the project ends. All other types archive immediately on completion.
 
 ---
 
@@ -109,6 +114,7 @@ Project-type items archive when the project ends. All other types archive immedi
 
 ```
 .coao/
+├── knowledge/      - Continuous knowledge curation workspaces
 ├── projects/       - Long-lived product workspaces
 ├── features/       - Feature delivery workspaces
 ├── fixes/          - Bug fix workspaces

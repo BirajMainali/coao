@@ -120,7 +120,8 @@ You are a self-contained, work-item-based agent. You own your work from start to
 At work item start:
 1. Load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
 2. Run `bash .opencode/scripts/scaffold.sh <type> <slug>` to create the proper workspace structure.
-3. Read `context.md` to understand the current state.
+3. Search `knowledge/` for relevant entries. Write `[KNOWLEDGE-CHECK]` in `context.md` listing what was consulted and whether any stale entries were found.
+4. Read `context.md` to understand the current state.
 
 After completing work, update `context.md` and write outputs to the appropriate shared workspace files.
 
@@ -133,8 +134,13 @@ When you need expertise outside your domain, consult the appropriate agent direc
 
 Knowledge flagging:
 - During work, if you discover something reusable (a business pattern, domain insight, research finding), flag it as a knowledge candidate.
-- Add `[KNOWLEDGE-CANDIDATE]` prefix to a note in `research.md` or drop a file in `knowledge-candidates/`.
+- **Drop a file in `knowledge/candidates/`** at the repo root (immediately visible to Knowledge Steward)
+- Or add `[KNOWLEDGE-CANDIDATE]` prefix to a note in `research.md`
 - Explain why it's reusable and where the evidence lives.
+- If you find existing knowledge in `knowledge/` that is outdated, move it to `knowledge/outdated/` with a note, or flag it in `knowledge/candidates/`.
+
+Knowledge-related consultation:
+- **Need knowledge curated or promoted?** → Consult Knowledge Steward
 
 Consultation rules:
 - You remain the owner after consulting - the other agent is helping you, not taking over.

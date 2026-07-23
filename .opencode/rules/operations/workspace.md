@@ -38,8 +38,7 @@ Everything related to the work item must remain inside this workspace until the 
 ├── solution-architect/     - Solution Architect artifacts (design, architecture research)
 ├── software-engineer/      - Software Engineer artifacts (implementation notes, research)
 ├── qa-engineer/            - QA Engineer artifacts (test plans, validation results)
-├── attachments/            - Supporting files
-└── knowledge-candidates/   - Findings flagged for potential promotion
+└── attachments/            - Supporting files
 ```
 
 All agents contribute to context.md and decisions.md. Role-specific work lives in the agent's own directory.
@@ -139,13 +138,11 @@ Store supporting material that should not be duplicated.
 
 ---
 
-# knowledge-candidates/
+# knowledge/
 
-Findings flagged for potential promotion into organizational `knowledge/`.
+Organizational knowledge lives in `knowledge/` at the repo root, not inside work item workspaces.
 
-Prefix entries with `[KNOWLEDGE-CANDIDATE]` or `[KNOWLEDGE-STALE]` and explain reusability.
-
-Reviewed and curated at work item completion (per type rules).
+Drop candidates directly into `knowledge/candidates/` — no work item needed.
 
 ---
 

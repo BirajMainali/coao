@@ -2,13 +2,11 @@
 
 ## Purpose
 
-Ensure the organization becomes smarter after every work item.
+Ensure the organization becomes smarter over time.
 
-Knowledge is a long-term organizational asset.
+Knowledge is a long-term organizational asset. It must be discovered, curated, and maintained continuously — not only at work item boundaries.
 
-Memory supports execution.
-
-Knowledge supports future decisions.
+Memory supports execution. Knowledge supports future decisions.
 
 ---
 
@@ -16,55 +14,35 @@ Knowledge supports future decisions.
 
 ### Memory
 
-Memory is work-item-specific.
+Memory is work-item-specific. It captures information needed to complete the current work item.
 
-It captures information needed to complete the current work item.
+Examples: progress, notes, research, open questions, handoffs, temporary decisions, working assumptions.
 
-Examples
+Memory lives in `.coao/<type>s/<slug>/` and is archived with the workspace.
 
-- Progress
-- Notes
-- Research
-- Open questions
-- Handoffs
-- Temporary decisions
-- Working assumptions
-
-Memory belongs in `.coao/<type>s/<slug>/`.
-
-Memory is archived with the workspace and never promoted to knowledge.
+Memory is never promoted to knowledge.
 
 ---
 
 ### Knowledge
 
-Knowledge is reusable organizational intelligence.
+Knowledge is reusable organizational intelligence that outlives any single work item.
 
-It should improve future work items.
+Examples: proven patterns, best practices, architecture guidance, business rules, standards, lessons learned, reusable decisions.
 
-Examples
-
-- Proven patterns
-- Best practices
-- Architecture guidance
-- Business rules
-- Standards
-- Lessons learned
-- Reusable decisions
-
-Knowledge lives in `knowledge/` at the repository root.
-
-Knowledge persists across work items and survives workspace archiving.
+Knowledge lives in `knowledge/` at the repository root and persists across work items.
 
 ### Knowledge Store Structure
 
 ```
 knowledge/
-├── decisions/       - Architecture Decision Records (ADRs)
-├── standards/       - Organizational standards and conventions
-├── patterns/        - Reusable design and implementation patterns
-├── runbooks/        - Operational procedures and troubleshooting
-└── lessons/         - Retrospective insights and lessons learned
+├── candidates/    - Unreviewed submissions (anyone can drop a file)
+├── decisions/     - Architecture Decision Records (ADRs)
+├── standards/     - Organizational standards and conventions
+├── patterns/      - Reusable design and implementation patterns
+├── runbooks/      - Operational procedures and troubleshooting
+├── lessons/       - Retrospective insights and lessons learned
+└── outdated/      - Deprecated or superseded entries
 ```
 
 ### Classification Guide
@@ -80,111 +58,153 @@ knowledge/
 | External reference, tool evaluation | `patterns/` | "Comparison of testing frameworks" |
 | Operational alert, monitoring setup | `runbooks/` | "How to respond to PagerDuty alert X" |
 
-### Demotion Guide
+### Degradation Guide
 
-When stale knowledge is flagged (`[KNOWLEDGE-STALE]`):
+When knowledge is outdated:
 
 | Condition | Action |
 |---|---|
 | Still accurate but missing context | Update with new evidence |
-| Partially wrong in a newer version | Add version note, mark superseded, link to new entry |
-| Completely wrong or obsolete | Mark as `deprecated` with reason and date |
-| Never referenced in 3+ work items | Archive (move to `knowledge/_archived/`) |
+| Partially wrong in a newer version | Add version note, mark superseded, link to updated entry |
+| Completely wrong or obsolete | Move to `outdated/` with reason and date |
+| Never referenced in 3+ work items | Move to `outdated/` |
 
 ---
 
-## Promotion Pipeline
+## Lifecycle
 
-Not all memory becomes knowledge. Promotion follows a staged pipeline:
+Three states, all inside `knowledge/`:
 
 ```
-Collect (during work item) → Curate (knowledge review) → Promote (write to knowledge/) → Validate (future work items)
+candidates/ → decisions/ | standards/ | patterns/ | runbooks/ | lessons/ → outdated/
 ```
+
+1. **candidates/** — unreviewed submissions. Anyone drops a file here anytime.
+2. **knowledge/** — promoted entries in their category. Curated, evidence-based, reusable.
+3. **outdated/** — deprecated entries. Moved here with reason and date when stale or superseded.
+
+That is the entire lifecycle. Candidate rejection is a move to `outdated/` with reason. Stale detection is a move to `outdated/`.
+
+### Who can submit
+
+Any agent, at any time — during a work item or outside one. No work item required. Drop a file in `knowledge/candidates/`.
+
+### Flagging stale knowledge
+
+When you find inaccurate or outdated knowledge in `knowledge/` (decisions/, standards/, etc.), move it to `outdated/` with a note explaining why. Or if unsure, drop a `[STALE]` note in `candidates/` referencing the entry.
 
 ---
 
-### Stage 1 - Collect (continuous, during work item)
+## Promotion
 
-Every agent continuously watches for reusable findings during their work.
+### Criteria
 
-When an agent discovers something potentially reusable:
-1. Write a brief note in their role's `research/` with the prefix `[KNOWLEDGE-CANDIDATE]`
-2. Or drop a file in the work-item-level `knowledge-candidates/` directory
-3. Include: what was found, why it's reusable, and where the evidence lives
+A candidate is ready for promotion only when ALL are true:
 
-Agents should also check existing knowledge during research - if they find outdated or incorrect knowledge, flag it in `knowledge-candidates/` with prefix `[KNOWLEDGE-STALE]`.
+- **Reusable** — Applicable across multiple work items
+- **Evidence-based** — Backed by real results
+- **Valuable beyond current context** — Reduces future effort or prevents mistakes
+- **Stable** — Unlikely to change frequently
+- **Relevant to decision-making** — Helps someone choose what to do
 
-### Stage 2 - Curate (at work item completion)
+### Process
 
-During the Knowledge Review phase (after Work Item Complete, before Workspace Archived), the last active agent:
+The Knowledge Steward:
 
-1. **Collect candidates** - read `knowledge-candidates/` and grep for `[KNOWLEDGE-CANDIDATE]` in all role `research/` and `artifacts/`
-2. **Evaluate against criteria** - each candidate must be:
-   - Reusable across multiple work items
-   - Evidence-based (backed by real results)
-   - Valuable beyond the current work item
-   - Stable (unlikely to change frequently)
-   - Relevant to future decision-making
-3. **Deduplicate** - search `knowledge/` for duplicates or related entries
-4. **Categorize** - use the Classification Guide to map each finding to the right `knowledge/` subdirectory
+1. **Read** — Understand the claim and evidence
+2. **Deduplicate** — Search `knowledge/` for existing entries
+3. **Evaluate** — Check promotion criteria
+4. **Categorize** — Map to the right subdirectory
+5. **Promote** — Write to the appropriate category directory, link to evidence
+6. **Remove** — Delete from `candidates/` (or move to `outdated/` if rejected with reason)
 
-### Stage 3 - Promote (at work item completion)
+---
 
-For each curated candidate:
+## Revalidation
 
-1. **Improve or create** - write to the appropriate `knowledge/` subdirectory. Improve existing entries rather than creating duplicates.
-2. **Link to evidence** - reference the workspace path where the original finding lives
-3. **Record in context.md** - note what was promoted and where it now lives
+Three mechanisms:
 
-### Stage 4 - Validate (ongoing across future work items)
+### 1. Passive (every agent, every work item)
 
-Knowledge is only proven when it survives real use:
+Every agent consults `knowledge/` before starting work via `[KNOWLEDGE-CHECK]` in context.md. If they find stale entries, they move them to `outdated/` or flag in `candidates/`.
 
-1. **Future agents reference `knowledge/`** before starting work in a domain
-2. **If knowledge is inaccurate or outdated**, the agent flags it with `[KNOWLEDGE-STALE]` in the current work item's `knowledge-candidates/`
-3. **Stale knowledge is reviewed** during the next curation cycle - use the Demotion Guide to decide whether to update, deprecate, or archive
-4. **Promoted knowledge that is never referenced** after 3 work items is archived (`knowledge/_archived/`)
+### 2. Scheduled (Knowledge Steward)
 
-### What stays as memory
+A full audit is mandatory when:
+- 5 work items have completed since the last audit
+- A human requests it
 
-- Progress notes, open questions, working assumptions
-- Temporary decisions not intended to be permanent
-- Research that was context-specific and not reusable
-- Handoff documents and ownership records
-- Anything that does not meet the promotion criteria
+The Steward reviews every entry in `knowledge/`, applies the Degradation Guide, and records findings in context.md.
 
-Memory is archived with the workspace. It is never deleted but is not expected to be read again unless the work item is resumed.
+### 3. Triggered (Knowledge Steward)
+
+When stale knowledge is flagged, the Steward processes it immediately.
+
+---
+
+## Knowledge Accounting
+
+Three mandatory artifacts in context.md:
+
+### [KNOWLEDGE-CHECK] (initiation, required)
+
+Every work item requiring knowledge search (feature, project, spike) must produce this during initiation:
+
+```
+[KNOWLEDGE-CHECK] consulted knowledge/patterns/api-design.md, knowledge/standards/testing.md | result: no stale entries found
+[KNOWLEDGE-CHECK] consulted knowledge/decisions/auth-flow.md | result: entry outdated, moved to outdated/
+```
+
+Without this entry, the knowledge search step is considered skipped.
+
+### [KNOWLEDGE-FOUND] (advisory)
+
+When existing knowledge directly helped:
+
+```
+[KNOWLEDGE-FOUND] knowledge/patterns/repository-pattern.md reduced design time via ready template
+```
+
+### [KNOWLEDGE-REFERENCE] (tracking)
+
+Each knowledge entry may track which work items reference it:
+
+```
+Referenced by: feature/user-auth-2026-07-15, fix/login-timeout-2026-07-20
+```
+
+Entries unreferenced for 3+ consecutive work items are moved to `outdated/`.
 
 ---
 
 ## Knowledge Outcome Gate
 
-Every work item that requires `knowledge-candidates` (see work items by type in @.opencode/rules/operations/work-items.md) must produce a documented knowledge outcome before the workspace is archived.
+Work items of type knowledge, project, feature, and spike must document a knowledge outcome before archiving.
 
-The last active agent writes a `Knowledge Outcome` entry in `context.md`:
-
+The last active agent writes in `context.md`:
 - `[KNOWLEDGE-PROMOTED] <path>` — reusable finding was promoted to `knowledge/`
-- `[KNOWLEDGE-NONE] <reason>` — nothing met the promotion criteria, with explanation
+- `[KNOWLEDGE-CANDIDATE-FILED] <path>` — candidate was dropped in repo-root `knowledge/candidates/`
+- `[KNOWLEDGE-NONE] <reason>` — nothing met the promotion criteria
 
-This is a completion requirement, not optional. Without this gate, promotion defaults to "skip" — work items complete without leaving organizational trace, and the same lessons are learned repeatedly.
+This ensures every work item either contributes knowledge or explains why it did not.
 
 ---
 
 ## Principles
 
-- Search existing knowledge before creating new knowledge.
-- Improve existing knowledge before creating duplicates.
-- Link knowledge to supporting evidence.
-- Keep knowledge technology-agnostic whenever possible.
-- Retire obsolete knowledge.
-- Version significant changes.
+- Search existing knowledge before creating new knowledge
+- Improve existing knowledge before creating duplicates
+- Link knowledge to supporting evidence
+- Keep knowledge technology-agnostic whenever possible
+- Retire obsolete knowledge
+- Version significant changes
+- Knowledge discovery is everyone's job; curation is the Steward's
 
 ---
 
 ## Success
 
-Future agents should solve similar problems faster because organizational knowledge continues to improve.
-
-The workspace should contain work item memory.
-
-The knowledge base (`knowledge/`) should contain only reusable organizational intelligence.
+- Future agents solve similar problems faster because knowledge improves
+- `knowledge/candidates/` rarely exceeds 5 unreviewed items
+- Stale knowledge is caught before it misleads
+- Knowledge grows independently of work item throughput
