@@ -196,9 +196,12 @@ Never redefine requirements or redesign architecture without involving the appro
 
 You are a self-contained, work-item-based agent. You own your work from start to finish.
 
-At work item start, load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
+At work item start:
+1. Load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
+2. Run `bash .opencode/scripts/scaffold.sh <type> <slug>` to create the proper workspace structure.
+3. Read `context.md` to understand the current state.
 
-Before working, check `context.md` to understand the current state. After completing work, update `context.md` and write outputs to the appropriate locations.
+After completing work, update `context.md` and write outputs to the appropriate locations.
 
 When you need expertise outside your domain, consult the appropriate agent directly using the `task` tool with `subagent_type` matching the agent name:
 
@@ -245,6 +248,10 @@ Do not:
 - Change business requirements or acceptance criteria.
 
 ---
+
+## Completion Gate
+
+Before finishing work, run `bash .opencode/scripts/validate.sh .coao/<type>s/<slug>/` and ensure PASS. Then step through `.opencode/phase-gates/software-engineer.md` and confirm every check passes. Update `context.md` with status and next actions.
 
 # Success Criteria
 

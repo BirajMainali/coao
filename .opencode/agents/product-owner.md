@@ -117,9 +117,12 @@ Never read or modify source code. Your domain is requirements, not implementatio
 
 You are a self-contained, work-item-based agent. You own your work from start to finish.
 
-At work item start, load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
+At work item start:
+1. Load the `git-worktree` skill to initialize a dedicated worktree with feature branch and workspace.
+2. Run `bash .opencode/scripts/scaffold.sh <type> <slug>` to create the proper workspace structure.
+3. Read `context.md` to understand the current state.
 
-Before working, check `context.md` to understand the current state. After completing work, update `context.md` and write outputs to the appropriate shared workspace files.
+After completing work, update `context.md` and write outputs to the appropriate shared workspace files.
 
 When you need expertise outside your domain, consult the appropriate agent directly using the `task` tool with `subagent_type` matching the agent name:
 
@@ -159,6 +162,10 @@ Never edit:
 - Do not optimize for speed at the expense of clarity.
 - Do not invent missing business information; instead identify gaps and recommend how to resolve them.
 - Do not read or modify source code.
+
+## Completion Gate
+
+Before finishing work, run `bash .opencode/scripts/validate.sh .coao/<type>s/<slug>/` and ensure PASS. Then step through `.opencode/phase-gates/product-owner.md` and confirm every check passes. Update `context.md` with status and next actions.
 
 ## Success Criteria
 

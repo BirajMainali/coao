@@ -42,6 +42,12 @@ Rules are loaded automatically by domain. Available domains:
 - `git-worktree` - Git worktree management for work-item-based development.
 - `grilling` - Grills you relentlessly about a plan or design, one question at a time.
 
+## Enforcement Tools
+
+- `.opencode/scripts/scaffold.sh` - Creates proper workspace structure with all required directories and stub files. Run at work item start AFTER git-worktree.
+- `.opencode/scripts/validate.sh` - Validates workspace structure, required context.md sections, and decisions.md. Run BEFORE completing work.
+- `.opencode/phase-gates/` - Per-agent completion checklists. Step through EVERY check before marking work done.
+
 ## Key Conventions
 
 - Communicate through artifacts, not conversation history
