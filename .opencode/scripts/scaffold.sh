@@ -64,5 +64,47 @@ case "$TYPE" in task|chore) ;; *)
   cat > "$WORKSPACE/decisions.md" <<< "# Decisions\n" ;;
 esac
 
+# relationships.md (required for feature, project, spike)
+case "$TYPE" in feature|spike)
+  cp ".opencode/templates/relationships.md" "$WORKSPACE/relationships.md" 2>/dev/null || \
+  cat > "$WORKSPACE/relationships.md" <<EOF
+# Work Item Relationships
+
+\`\`\`yaml
+work_item:
+  id: "${P}/${SLUG}"
+  type: ${TYPE}
+  title: ""
+  status: active
+
+relationships: []
+\`\`\`
+EOF
+  ;;
+esac
+
+# research-brief.md (required for spike)
+case "$TYPE" in spike)
+  cp ".opencode/templates/research-brief.md" "$WORKSPACE/research-brief.md" 2>/dev/null || \
+  cat > "$WORKSPACE/research-brief.md" <<EOF
+# Research Brief
+
+Created by: \`<SA | PO>\`
+For: True Researcher
+Date: \`$(date +%Y-%m-%d)\`
+
+## Question
+
+## Domain Context
+
+## Constraints
+
+## Success Criteria
+
+## Out of Scope
+EOF
+  ;;
+esac
+
 echo "Done: $WORKSPACE/"
 echo "Roles: $ROLES"

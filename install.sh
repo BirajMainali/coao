@@ -75,6 +75,8 @@ case "$choice" in
     cp -R "$SOURCE/agents" "$TARGET/" 2>/dev/null || true
     cp -R "$SOURCE/skills" "$TARGET/" 2>/dev/null || true
     cp -R "$SOURCE/rules" "$TARGET/" 2>/dev/null || true
+    cp -R "$SOURCE/scripts" "$TARGET/" 2>/dev/null || true
+    cp -R "$SOURCE/templates" "$TARGET/" 2>/dev/null || true
     cp "$SOURCE/AGENTS.md" "$TARGET/"
     cp "$SOURCE/opencode.json" "$TARGET/"
 
@@ -83,7 +85,12 @@ case "$choice" in
       sed \
         -e 's|"\.opencode/AGENTS\.md"|"AGENTS.md"|g' \
         -e 's|"\.opencode/rules/|"rules/|g' \
+        -e 's|\.opencode/scripts/|scripts/|g' \
+        -e 's|\.opencode/templates/|templates/|g' \
         "$SOURCE/opencode.json" > "$TARGET/opencode.json"
+      # Rewrite script paths in agents and rules
+      find "$TARGET/agents" "$TARGET/rules" -name '*.md' -exec \
+        sed -i 's|\.opencode/scripts/|scripts/|g; s|\.opencode/templates/|templates/|g' {} +
     fi
 
     echo ""
@@ -94,6 +101,8 @@ case "$choice" in
     echo "    ├── opencode.json"
     echo "    ├── agents/"
     echo "    ├── skills/"
+    echo "    ├── scripts/"
+    echo "    ├── templates/"
     echo "    └── rules/"
     ;;
 
@@ -131,6 +140,8 @@ case "$choice" in
     echo "    ├── opencode.json"
     echo "    ├── agents/"
     echo "    ├── skills/"
+    echo "    ├── scripts/"
+    echo "    ├── templates/"
     echo "    └── rules/"
     echo ""
     echo "  AGENTS.md      -> .opencode/AGENTS.md"
