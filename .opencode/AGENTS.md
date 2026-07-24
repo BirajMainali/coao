@@ -6,7 +6,7 @@ This is a multi-agent engineering organization. The project defines rules, agent
 
 Every new task starts here: @.opencode/rules/operations/initiation.md
 
-Follow the initiation sequence (classify → validate → plan → workspace → confirm) before doing anything else. This auto-routes the task to the correct agents, skills, and workflow. Before planning, always search `knowledge/` for relevant existing patterns, decisions, or standards. The sequence scales with the work item — task and chore skip the workspace and confirmation steps.
+Follow the initiation sequence (classify → validate → plan → workspace → confirm) before doing anything else. This auto-routes the task to the correct agents, skills, and workflow. Before planning, always search `knowledge/` for relevant existing patterns, decisions, or standards. Also check `.coao/context-graph.md` for related work items. The sequence scales with the work item — task and chore skip the workspace and confirmation steps.
 
 ## Project Structure
 
@@ -34,13 +34,13 @@ Rules are loaded automatically by domain. Available domains:
 - `.opencode/agents/software-engineer.md` - Production implementation
 - `.opencode/agents/solution-architect.md` - Technical design and architecture
 - `.opencode/agents/true-researcher.md` - Unbiased, context-free research using web search and domain expertise (eliminates X)
+- `.opencode/agents/knowledge-steward.md` - Organizational knowledge lifecycle: discovery, triage, promotion, validation, and retirement
 
 ## Available Skills
 
-- `caveman` - Ultra-compressed communication mode. Cuts token usage ~75%. Use `caveman` when asked for brevity.
 - `git-branching` - Consistent Git branching conventions: branch from production branches, safe merge workflow, human-style commits.
 - `git-worktree` - Git worktree management for work-item-based development.
-- `grilling` - Grills you relentlessly about a plan or design, one question at a time.
+- `prototype` - Throwaway HTML/CSS/JS prototype for UI and domain validation.
 
 ## Key Conventions
 
@@ -49,6 +49,7 @@ Rules are loaded automatically by domain. Available domains:
 - Every work item has an isolated workspace under `.coao/<type>s/<slug>/`
 - Source code belongs in the repo; work item artifacts belong in the workspace
 - Knowledge outlives work items; memory is archived with the workspace
+- Work items declare relationships to each other via `relationships.md`; relationships are indexed in `.coao/context-graph.md`
 
 ## Install
 

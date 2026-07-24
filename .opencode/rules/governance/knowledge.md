@@ -1,190 +1,89 @@
-# Knowledge Governance Policy
+# Knowledge Governance
 
 ## Purpose
 
-Ensure the organization becomes smarter after every work item.
+Ensure the organization becomes smarter over time.
 
-Knowledge is a long-term organizational asset.
-
-Memory supports execution.
-
-Knowledge supports future decisions.
+Knowledge is a long-term organizational asset. Memory supports execution; knowledge supports future decisions.
 
 ---
 
 ## Knowledge vs Memory
 
-### Memory
+**Memory** is work-item-specific: progress notes, open questions, working assumptions, handoff records. Lives in `.coao/<type>s/<slug>/`. Archived with the workspace. Never promoted.
 
-Memory is work-item-specific.
-
-It captures information needed to complete the current work item.
-
-Examples
-
-- Progress
-- Notes
-- Research
-- Open questions
-- Handoffs
-- Temporary decisions
-- Working assumptions
-
-Memory belongs in `.coao/<type>s/<slug>/`.
-
-Memory is archived with the workspace and never promoted to knowledge.
+**Knowledge** is organizational: proven patterns, architecture decisions, standards, runbooks, lessons learned. Lives in `knowledge/` at repo root. Persists across work items.
 
 ---
 
-### Knowledge
-
-Knowledge is reusable organizational intelligence.
-
-It should improve future work items.
-
-Examples
-
-- Proven patterns
-- Best practices
-- Architecture guidance
-- Business rules
-- Standards
-- Lessons learned
-- Reusable decisions
-
-Knowledge lives in `knowledge/` at the repository root.
-
-Knowledge persists across work items and survives workspace archiving.
-
-### Knowledge Store Structure
+## Knowledge Store
 
 ```
 knowledge/
-├── decisions/       - Architecture Decision Records (ADRs)
-├── standards/       - Organizational standards and conventions
-├── patterns/        - Reusable design and implementation patterns
-├── runbooks/        - Operational procedures and troubleshooting
-└── lessons/         - Retrospective insights and lessons learned
+├── candidates/    - Unreviewed submissions (anyone can drop a file)
+├── decisions/     - Architecture Decision Records (ADRs)
+├── standards/     - Organizational standards and conventions
+├── patterns/      - Reusable design and implementation patterns
+├── runbooks/      - Operational procedures and troubleshooting
+├── lessons/       - Retrospective insights and lessons learned
+└── outdated/      - Deprecated or superseded entries
 ```
 
-### Classification Guide
+### Classification
 
-| Type of finding | → Promote to | Example |
+| Finding type | → Directory | Example |
 |---|---|---|
-| Architecture decision, technology choice, trade-off analysis | `decisions/` | "We chose Postgres over MySQL because of JSONB support" |
-| Coding convention, workflow, process rule | `standards/` | "All API routes must use Zod validation" |
-| Reusable solution to a recurring problem | `patterns/` | "Repository pattern for database access" |
-| Step-by-step procedure, deployment steps, troubleshooting | `runbooks/` | "How to rollback a failed deployment" |
-| Retrospective insight, what went wrong/right | `lessons/` | "We underestimated cache invalidation complexity" |
-| Business rule, domain logic | `standards/` | "Orders must be authorized before fulfillment" |
-| External reference, tool evaluation | `patterns/` | "Comparison of testing frameworks" |
-| Operational alert, monitoring setup | `runbooks/` | "How to respond to PagerDuty alert X" |
+| Architecture decision, technology choice | `decisions/` | "Why we chose Postgres" |
+| Coding convention, process rule | `standards/` | "Use Zod for all route validation" |
+| Reusable solution to recurring problem | `patterns/` | "Repository pattern for DB access" |
+| Step-by-step procedure | `runbooks/` | "How to rollback a failed deployment" |
+| Retrospective insight | `lessons/` | "We underestimated cache invalidation" |
 
-### Demotion Guide
+---
 
-When stale knowledge is flagged (`[KNOWLEDGE-STALE]`):
+## Lifecycle
+
+Three states, all inside `knowledge/`:
+
+```
+candidates/ → decisions/ | standards/ | patterns/ | runbooks/ | lessons/ → outdated/
+```
+
+1. **candidates/** — unreviewed submissions. Anyone drops a file anytime, no work item needed.
+2. **knowledge/** — promoted entries. Curated, evidence-based, reusable.
+3. **outdated/** — deprecated entries. Moved here with reason and date.
+
+---
+
+## Promotion
+
+A candidate is ready when ALL are true:
+- **Reusable** — applicable across multiple work items
+- **Evidence-based** — backed by real results
+- **Valuable beyond current context** — reduces future effort or prevents mistakes
+- **Stable** — unlikely to change frequently
+- **Relevant to decision-making** — helps someone choose what to do
+
+Process: Knowledge Steward reads → deduplicates → evaluates → categorizes → promotes → removes from candidates.
+
+---
+
+## Degradation
 
 | Condition | Action |
 |---|---|
 | Still accurate but missing context | Update with new evidence |
-| Partially wrong in a newer version | Add version note, mark superseded, link to new entry |
-| Completely wrong or obsolete | Mark as `deprecated` with reason and date |
-| Never referenced in 3+ work items | Archive (move to `knowledge/_archived/`) |
-
----
-
-## Promotion Pipeline
-
-Not all memory becomes knowledge. Promotion follows a staged pipeline:
-
-```
-Collect (during work item) → Curate (knowledge review) → Promote (write to knowledge/) → Validate (future work items)
-```
-
----
-
-### Stage 1 - Collect (continuous, during work item)
-
-Every agent continuously watches for reusable findings during their work.
-
-When an agent discovers something potentially reusable:
-1. Write a brief note in their role's `research/` with the prefix `[KNOWLEDGE-CANDIDATE]`
-2. Or drop a file in the work-item-level `knowledge-candidates/` directory
-3. Include: what was found, why it's reusable, and where the evidence lives
-
-Agents should also check existing knowledge during research - if they find outdated or incorrect knowledge, flag it in `knowledge-candidates/` with prefix `[KNOWLEDGE-STALE]`.
-
-### Stage 2 - Curate (at work item completion)
-
-During the Knowledge Review phase (after Work Item Complete, before Workspace Archived), the last active agent:
-
-1. **Collect candidates** - read `knowledge-candidates/` and grep for `[KNOWLEDGE-CANDIDATE]` in all role `research/` and `artifacts/`
-2. **Evaluate against criteria** - each candidate must be:
-   - Reusable across multiple work items
-   - Evidence-based (backed by real results)
-   - Valuable beyond the current work item
-   - Stable (unlikely to change frequently)
-   - Relevant to future decision-making
-3. **Deduplicate** - search `knowledge/` for duplicates or related entries
-4. **Categorize** - use the Classification Guide to map each finding to the right `knowledge/` subdirectory
-
-### Stage 3 - Promote (at work item completion)
-
-For each curated candidate:
-
-1. **Improve or create** - write to the appropriate `knowledge/` subdirectory. Improve existing entries rather than creating duplicates.
-2. **Link to evidence** - reference the workspace path where the original finding lives
-3. **Record in context.md** - note what was promoted and where it now lives
-
-### Stage 4 - Validate (ongoing across future work items)
-
-Knowledge is only proven when it survives real use:
-
-1. **Future agents reference `knowledge/`** before starting work in a domain
-2. **If knowledge is inaccurate or outdated**, the agent flags it with `[KNOWLEDGE-STALE]` in the current work item's `knowledge-candidates/`
-3. **Stale knowledge is reviewed** during the next curation cycle - use the Demotion Guide to decide whether to update, deprecate, or archive
-4. **Promoted knowledge that is never referenced** after 3 work items is archived (`knowledge/_archived/`)
-
-### What stays as memory
-
-- Progress notes, open questions, working assumptions
-- Temporary decisions not intended to be permanent
-- Research that was context-specific and not reusable
-- Handoff documents and ownership records
-- Anything that does not meet the promotion criteria
-
-Memory is archived with the workspace. It is never deleted but is not expected to be read again unless the work item is resumed.
-
----
-
-## Knowledge Outcome Gate
-
-Every work item that requires `knowledge-candidates` (see work items by type in @.opencode/rules/operations/work-items.md) must produce a documented knowledge outcome before the workspace is archived.
-
-The last active agent writes a `Knowledge Outcome` entry in `context.md`:
-
-- `[KNOWLEDGE-PROMOTED] <path>` — reusable finding was promoted to `knowledge/`
-- `[KNOWLEDGE-NONE] <reason>` — nothing met the promotion criteria, with explanation
-
-This is a completion requirement, not optional. Without this gate, promotion defaults to "skip" — work items complete without leaving organizational trace, and the same lessons are learned repeatedly.
+| Partially wrong in newer version | Add version note, mark superseded, link to update |
+| Completely wrong or obsolete | Move to `outdated/` with reason and date |
+| Never referenced in 3+ work items | Move to `outdated/` |
 
 ---
 
 ## Principles
 
-- Search existing knowledge before creating new knowledge.
-- Improve existing knowledge before creating duplicates.
-- Link knowledge to supporting evidence.
-- Keep knowledge technology-agnostic whenever possible.
-- Retire obsolete knowledge.
-- Version significant changes.
-
----
-
-## Success
-
-Future agents should solve similar problems faster because organizational knowledge continues to improve.
-
-The workspace should contain work item memory.
-
-The knowledge base (`knowledge/`) should contain only reusable organizational intelligence.
+- Search existing knowledge before creating new knowledge
+- Improve existing knowledge before creating duplicates
+- Link knowledge to supporting evidence
+- Keep knowledge technology-agnostic when possible
+- Retire obsolete knowledge promptly
+- Knowledge discovery is everyone's job; curation is the Steward's
