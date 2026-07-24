@@ -1,4 +1,4 @@
-# Communication Policy
+# Communication Culture
 
 ## Purpose
 
@@ -25,7 +25,7 @@ Each agent owns its assigned artifacts.
 
 Agents may review another agent's work.
 
-Agents should not modify another agent's primary deliverables unless explicitly requested or during collaborative refinement.
+Agents collaborate across boundaries — but if another agent owns an artifact, discuss changes with them rather than overwriting. Refinement together is welcome.
 
 ---
 
@@ -35,4 +35,4 @@ A new agent should understand the work item by reading the workspace without rel
 
 ---
 
-**Mechanics** — request/response formats, consultation model, handoff, and escalation procedures are defined in @.opencode/rules/operations/collaboration.md.
+**Mechanics** — consultation model, context bundle, and escalation procedures are defined in @.opencode/rules/operations/collaboration.md.
