@@ -64,5 +64,53 @@ case "$TYPE" in task|chore) ;; *)
   cat > "$WORKSPACE/decisions.md" <<< "# Decisions\n" ;;
 esac
 
+# relationships.md (required for feature, project, spike)
+# Write a fresh stub — never copy the template (its examples pollute context graph)
+case "$TYPE" in feature|spike)
+  cat > "$WORKSPACE/relationships.md" <<EOF
+# Work Item Relationships
+
+\`\`\`yaml
+work_item:
+  id: "${P}/${SLUG}"
+  type: ${TYPE}
+  title: ""
+  status: active
+
+relationships: []
+\`\`\`
+EOF
+  ;;
+esac
+
+# research-brief.md (required for spike)
+# Copy from template if available, fall back to inline stub
+case "$TYPE" in spike)
+  SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+  TEMPLATE="$SCRIPT_DIR/../templates/research-brief.md"
+  if [ -f "$TEMPLATE" ]; then
+    cp "$TEMPLATE" "$WORKSPACE/research-brief.md"
+  else
+    cat > "$WORKSPACE/research-brief.md" <<EOF
+# Research Brief
+
+Created by: \`<SA | PO>\`
+For: True Researcher
+Date: \`$(date +%Y-%m-%d)\`
+
+## Question
+
+## Domain Context
+
+## Constraints
+
+## Success Criteria
+
+## Out of Scope
+EOF
+  fi
+  ;;
+esac
+
 echo "Done: $WORKSPACE/"
 echo "Roles: $ROLES"

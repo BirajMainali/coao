@@ -75,15 +75,24 @@ case "$choice" in
     cp -R "$SOURCE/agents" "$TARGET/" 2>/dev/null || true
     cp -R "$SOURCE/skills" "$TARGET/" 2>/dev/null || true
     cp -R "$SOURCE/rules" "$TARGET/" 2>/dev/null || true
+    cp -R "$SOURCE/scripts" "$TARGET/" 2>/dev/null || true
+    cp -R "$SOURCE/templates" "$TARGET/" 2>/dev/null || true
     cp "$SOURCE/AGENTS.md" "$TARGET/"
     cp "$SOURCE/opencode.json" "$TARGET/"
 
     # Rewrite paths for global install
     if command -v sed >/dev/null; then
+      # opencode.json: .opencode/ paths → relative to config root
       sed \
         -e 's|"\.opencode/AGENTS\.md"|"AGENTS.md"|g' \
         -e 's|"\.opencode/rules/|"rules/|g' \
         "$SOURCE/opencode.json" > "$TARGET/opencode.json"
+      # Agent and rule files: .opencode/scripts/ → absolute install path
+      # (agents run from project cwd, not config root)
+      SCRIPTS_PATH="${TARGET}/scripts"
+      TEMPLATES_PATH="${TARGET}/templates"
+      find "$TARGET/agents" "$TARGET/rules" -name '*.md' -exec \
+        sed -i "s|\.opencode/scripts/|${SCRIPTS_PATH}/|g; s|\.opencode/templates/|${TEMPLATES_PATH}/|g" {} +
     fi
 
     echo ""
@@ -94,6 +103,8 @@ case "$choice" in
     echo "    ├── opencode.json"
     echo "    ├── agents/"
     echo "    ├── skills/"
+    echo "    ├── scripts/"
+    echo "    ├── templates/"
     echo "    └── rules/"
     ;;
 
@@ -131,6 +142,8 @@ case "$choice" in
     echo "    ├── opencode.json"
     echo "    ├── agents/"
     echo "    ├── skills/"
+    echo "    ├── scripts/"
+    echo "    ├── templates/"
     echo "    └── rules/"
     echo ""
     echo "  AGENTS.md      -> .opencode/AGENTS.md"
