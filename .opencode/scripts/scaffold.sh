@@ -65,8 +65,8 @@ case "$TYPE" in task|chore) ;; *)
 esac
 
 # relationships.md (required for feature, project, spike)
+# Write a fresh stub — never copy the template (its examples pollute context graph)
 case "$TYPE" in feature|spike)
-  cp ".opencode/templates/relationships.md" "$WORKSPACE/relationships.md" 2>/dev/null || \
   cat > "$WORKSPACE/relationships.md" <<EOF
 # Work Item Relationships
 
@@ -84,9 +84,14 @@ EOF
 esac
 
 # research-brief.md (required for spike)
+# Copy from template if available, fall back to inline stub
 case "$TYPE" in spike)
-  cp ".opencode/templates/research-brief.md" "$WORKSPACE/research-brief.md" 2>/dev/null || \
-  cat > "$WORKSPACE/research-brief.md" <<EOF
+  SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+  TEMPLATE="$SCRIPT_DIR/../templates/research-brief.md"
+  if [ -f "$TEMPLATE" ]; then
+    cp "$TEMPLATE" "$WORKSPACE/research-brief.md"
+  else
+    cat > "$WORKSPACE/research-brief.md" <<EOF
 # Research Brief
 
 Created by: \`<SA | PO>\`
@@ -103,6 +108,7 @@ Date: \`$(date +%Y-%m-%d)\`
 
 ## Out of Scope
 EOF
+  fi
   ;;
 esac
 

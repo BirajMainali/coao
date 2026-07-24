@@ -82,15 +82,17 @@ case "$choice" in
 
     # Rewrite paths for global install
     if command -v sed >/dev/null; then
+      # opencode.json: .opencode/ paths → relative to config root
       sed \
         -e 's|"\.opencode/AGENTS\.md"|"AGENTS.md"|g' \
         -e 's|"\.opencode/rules/|"rules/|g' \
-        -e 's|\.opencode/scripts/|scripts/|g' \
-        -e 's|\.opencode/templates/|templates/|g' \
         "$SOURCE/opencode.json" > "$TARGET/opencode.json"
-      # Rewrite script paths in agents and rules
+      # Agent and rule files: .opencode/scripts/ → absolute install path
+      # (agents run from project cwd, not config root)
+      SCRIPTS_PATH="${TARGET}/scripts"
+      TEMPLATES_PATH="${TARGET}/templates"
       find "$TARGET/agents" "$TARGET/rules" -name '*.md' -exec \
-        sed -i 's|\.opencode/scripts/|scripts/|g; s|\.opencode/templates/|templates/|g' {} +
+        sed -i "s|\.opencode/scripts/|${SCRIPTS_PATH}/|g; s|\.opencode/templates/|${TEMPLATES_PATH}/|g" {} +
     fi
 
     echo ""
